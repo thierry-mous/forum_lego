@@ -20,6 +20,10 @@ header {
     border-bottom: 2px solid #ccc;
 }
 
+header h1 {
+    margin: 0;
+    color: #333;
+}
 
 header p {
     color: #666;
@@ -33,6 +37,11 @@ header p {
     margin-top: 20px;
 }
 
+.post-link {
+    text-decoration: none;
+    color: inherit;
+}
+
 .post {
     display: flex;
     margin-bottom: 20px;
@@ -40,6 +49,12 @@ header p {
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #fafafa;
+    transition: background-color 0.3s ease;
+    width: 98%;
+}
+
+.post:hover {
+    background-color: #f0f0f0;
 }
 
 .user-info {
@@ -77,6 +92,7 @@ header p {
     margin-top: 10px;
     color: #333;
 }
+
 
 .title-topic {
     font-size: 1.5em;
