@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Accueil</title>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>index</title>
+        <link rel="stylesheet" href="/public/css/style.css">
+        <link rel="stylesheet" href="/public/css/header.css">
+    </head>
+
+<body>
+    <div class="main_ctn">
+        <div class="sub_ctn">
+            <div class="logo_ctn">
+                <img id="logo" src="/public/img/logo_transparent.png" alt="">
+                <a class="a_arrow" href="/">
+                    <img id="arrow" src="/public/img/fleche_transparent.png" alt="">
+                </a>
+            </div>
+            <div class="text">
+                <h1>Sign in</h1>
+                <p>Enter you personnal details to start you journey with us</p>
+            </div>
+            <div class="redirect_ctn">
+                <a class="redirect" href="/sign_up">Sign up</a>
+                <a class="redirect" href="/login">Sign in</a>
+            </div>
+            <div class="formulaire">
+                <form action="/login" method="post">
+                    <ul>
+                        <li>
+                            <label for="email"></label>
+                            <input type="email" name="email" id="email" placeholder="Identifiant" required>
+                        </li>
+                        <li>
+                            <label for="password"></label>
+                            <input type="password" name="password" id="password" placeholder="Mot de passe" required>
+                        </li>
+                        <li>
+                            <input type="submit" value="Sign in ">
+                        </li>   
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

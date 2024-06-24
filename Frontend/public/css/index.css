@@ -1,0 +1,60 @@
+
+
+
+
+
+
+
+video{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+  height: 25%;
+}
+
+
+
+.test{
+    width: 360px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.text{
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: black;
+}
+
+.relative {
+    position: relative;
+    width: 33%;
+    height: 100%;
+    bottom: 350px;
+    left: 175px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cate-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+}
+
+.box1 img {
+    width: 150px;
+    height: 130px;
+
+}
