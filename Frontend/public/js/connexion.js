@@ -1,28 +1,32 @@
-document.getElementById('loginform').addEventListener('submit', async function(event) {
+document.getElementById('loginForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
-    const identifier = document.getElementById('email').value;
+    const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
-    if (!identifier || !password) {
-        alert("Veuillez remplir tous les champs.");
-        return;
-    }
-
-    const response = await fetch('/login', {
+    fetch('http://localhost:3000/api/users/login', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ identifier, password })
+        body: JSON.stringify({ username, password }),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Invalid credentials');
+        }
+        return response.text();
+    })
+    .then(data => {
+        console.log(data)
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        const messageElement = document.getElementById('message');
+        if (messageElement) {
+            messageElement.textContent = 'Error: ' + error.message;
+        } else {
+            console.error('Element with ID "message" not found in the DOM.');
+        }
     });
-
-    const data = await response.json();
-
-    if (data.success) {
-        alert("Connexion réussie !");
-    window.location.href = '/';
-    } else {
-        alert(data.message);
-    }
 });

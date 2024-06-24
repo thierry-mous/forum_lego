@@ -1,36 +1,96 @@
-const Inscription = require('../modeles/inscription_modeles');
-const bcrypt = require('bcrypt');
+const crypto = require('crypto');
+const userModel = require('../modeles/modeles');
 
-class ControllerInscription {
-    static async postInscription(req, res) {
-        try {
-            const { username, email, password } = req.body;
+const registerUser = async (req, res) => {
+    const { username, email, password } = req.body;
 
-            // Valider les données ici (exemple simple)
-            if (!(username && email && password)) {
-                return res.status(400).send("Toutes les données sont requises");
-            }
-
-            // Hasher le mot de passe
-            const hashedPassword = await bcrypt.hash(password, 10);
-
-            // Insérer dans la base de données (exemple hypothétique)
-            const newUser = await Inscription.create({
-                username,
-                email,
-                password: hashedPassword
-            });
-
-            // Réponse de succès
-            res.status(201).json({
-                message: "Utilisateur créé avec succès",
-                utilisateur: newUser
-            });
-        } catch (error) {
-            console.error(error);
-            res.status(500).send("Erreur lors de la création de l'utilisateur");
-        }
+    if (!isUsernameValid(username)) {
+        return res.status(400).send('Username must be alphanumeric and between 3 to 20 characters long.');
     }
+
+    if (!isEmailValid(email)) {
+        return res.status(400).send('Invalid email format.');
+    }
+
+    if (!isPasswordValid(password)) {
+        return res.status(400).send('Password must be at least 8 characters long, contain at least one uppercase letter, and one special character.');
+    }
+
+    try {
+        const hash = crypto.createHash('sha512').update(password).digest('hex');
+
+        const newUser = {
+            username,
+            email,
+            user_password: hash,
+            photo: null,
+            biography: null,
+            user_connexion: null,
+            admin_id: null
+        };
+
+        await userModel.createUser(newUser);
+        return res.status(200).send('User registered successfully');
+    } catch (err) {
+        if (err.code === 'ER_DUP_ENTRY') {
+            const duplicateField = err.sqlMessage.includes('username') ? 'Username' : 'Email';
+            return res.status(400).send(`The ${duplicateField} already exists`);
+        } else if (err.message.includes('Duplicate entry')) {
+            return res.status(400).send('Username or Email already exists');
+        }
+
+        return res.status(500).send('Server error');
+    }
+};
+
+const authenticateUser = async (req, res) => {
+    const { username, password } = req.body;
+
+    try {
+        const user = await userModel.getUserByUsername(username);
+
+        if (!user) {
+            return res.status(404).send('User not found');
+        }
+
+        const hash = crypto.createHash('sha512').update(password).digest('hex');
+
+        console.log('Hash from input:', hash);
+        console.log('Stored hash:', user.user_password);
+
+        if (user.user_password !== hash) {
+            return res.status(401).send('Invalid password');
+        }
+
+        return res.status(200).send('Login successful');
+    } catch (err) {
+        console.error(err);
+        return res.status(500).send('Server error');
+    }
+};
+
+
+function isUsernameValid(username) {
+    const regex = /^[a-zA-Z0-9]{3,20}$/;
+    return regex.test(username);
 }
 
-module.exports = ControllerInscription;
+function isEmailValid(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+}
+
+function isPasswordValid(password) {
+    if (password.length < 8) {
+        return false;
+    }
+    const regexUpper = /[A-Z]/;
+    const regexSpecial = /[!@#$%^&*(),.?":{}|<>]/;
+    return regexUpper.test(password) && regexSpecial.test(password);
+}
+
+
+module.exports = {
+    registerUser,
+    authenticateUser
+};

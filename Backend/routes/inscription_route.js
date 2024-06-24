@@ -1,12 +1,9 @@
-module.exports = (app) => {
-    const inscription = require('../controller/inscription_controller.js');
+const express = require('express');
+const { registerUser, authenticateUser } = require('../controller/inscription_controller');
 
-    let routeur = require('express').Router();
+const router = express.Router();
 
-    routeur.put('/inscription', inscription.postIncscritpion);
+router.post('/signup', registerUser);
+router.post('/login', authenticateUser);
 
-
-    
-
-    app.use('/api', routeur);
-}
+module.exports = router;

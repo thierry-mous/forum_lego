@@ -1,18 +1,12 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home page</title>
-    <html lang="en">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>index</title>
-        <link rel="stylesheet" href="/public/css/style.css">
-        <link rel="stylesheet" href="/public/css/header.css">
-    </head>
-
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="/public/css/header.css">
+</head>
 <body>
     <div class="main_ctn">
         <div class="sub_ctn">
@@ -24,31 +18,31 @@
             </div>
             <div class="text">
                 <h1>Sign in</h1>
-                <p>Enter your personnal details to start your journey with us</p>
+                <p>Enter your personal details to start your journey with us</p>
             </div>
             <div class="redirect_ctn">
                 <a class="redirect" href="/sign_up">Sign up</a>
                 <a class="redirect" href="/login">Sign in</a>
             </div>
             <div class="formulaire">
-                <form action="/login" method="post" id="loginform">
+                <form action="/login" method="post" id="loginForm">
                     <ul>
                         <li>
-                            <label for="email"></label>
-                            <input type="email" name="email" id="email" placeholder="Identifiant" required>
+                            <label for="username">Username:</label>
+                            <input type="text" name="username" id="username" placeholder="Username" required>
                         </li>
                         <li>
-                            <label for="password"></label>
-                            <input type="password" name="password" id="password" placeholder="Mot de passe" required>
+                            <label for="password">Password:</label>
+                            <input type="password" name="password" id="password" placeholder="Password" required>
                         </li>
                         <li>
-                            <input type="submit" value="Sign in ">
-                        </li>   
+                            <input type="submit" value="Sign in">
+                        </li>
                     </ul>
                 </form>
             </div>
         </div>
     </div>
+    <script src="/public/js/connexion.js"></script>
 </body>
-
 </html>

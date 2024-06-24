@@ -6,9 +6,9 @@ use forum;
 
 CREATE TABLE users (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    username VARCHAR(20) NOT NULL,
+    username VARCHAR(20) NOT NULL UNIQUE,
     email VARCHAR(255) NOT NULL UNIQUE,
-    user_password VARCHAR(20) NOT NULL,
+    user_password VARCHAR(255) NOT NULL,
     photo VARCHAR(255),
     biography TEXT,
     user_connexion VARCHAR(20),
