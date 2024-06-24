@@ -22,6 +22,10 @@ app.get('/sign_up', (req, res) => {
     res.sendFile(join(__dirname, 'templates', 'inscription.html'));
 });
 
+app.get('/topics', (req, res) => {
+    res.sendFile(join(__dirname, 'templates', 'topics.html'));
+});
+
 
 
 
