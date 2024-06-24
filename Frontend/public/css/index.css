@@ -2,34 +2,38 @@
 
 h1 {
     font-family: "Open Sans", sans-serif;
-    font-size:25px;
+    font-size: 25px;
     color: white;
     text-shadow:
-                -2px -2px 0 #000,  
-                 2px -2px 0 #000,
-                -2px  2px 0 #000,
-                 2px  2px 0 #000;
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000;
 }
 
-video{
+.category_footer h2 {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+video {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     margin-top: 20px;
-  height: 25%;
+    height: 25%;
 }
 
-
-
-.test{
+.test {
     font-family: "Open Sans", sans-serif;
     width: 360px;
     font-size: 30px;
     text-align: center;
 }
 
-.text{
+.text {
     font-family: "Open Sans", sans-serif;
     font-size: 20px;
     font-weight: bold;
@@ -54,16 +58,39 @@ video{
     align-items: center;
 }
 
-.cate-title{
+.cate-title {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: red;
+    width: 100%;
+    margin-bottom: 50px;
 }
 
-.box1 img {
+.box img {
     width: 150px;
     height: 130px;
+  
 
 }
 
+.box {
+    width: 200px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cate {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.category_footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
