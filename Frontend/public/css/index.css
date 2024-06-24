@@ -63,7 +63,7 @@ banner img {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: red;
+    background-color: #CCCCCD;
     width: 100%;
     margin-bottom: 50px;
 }
@@ -97,7 +97,7 @@ banner img {
 }
 
 .join{
-    background-color: #9b0a0a;
+    background-color: #005AD2;
     color: white;
     border: none;
     padding: 10px 20px;
