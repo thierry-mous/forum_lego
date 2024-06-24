@@ -21,6 +21,17 @@ header{
     height: 100px;
 }
 
+h1 {
+    font-family: "Open Sans", sans-serif;
+    font-size: 20px;
+    color: white;
+    text-shadow:
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000;
+}
+
 .header-cat{
     width: 35%;
     display: flex;
