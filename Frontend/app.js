@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-    res.sendFile(join(__dirname, 'templates', 'connecxion.html'));
+    res.sendFile(join(__dirname, 'templates', 'connexion.html'));
 });
 
 app.get('/sign_up', (req, res) => {
