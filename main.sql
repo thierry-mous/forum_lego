@@ -1,4 +1,4 @@
-CREATE DATABASE forum;
+CREATE DATABASE forum
 DEFAULT CHARACTER SET latin1
 DEFAULT COLLATE latin1_bin;
 
@@ -28,8 +28,6 @@ VALUES
 ('CompetitiveBuilder', 'compbuilder@example.com', 'winningmove', 'photo8.jpg', 'Competing in Lego building competitions.', 'active', 2),
 ('MovieCritic', 'moviecritic@example.com', 'movielover', 'photo9.jpg', 'Discussing Lego movies.', 'active', 3),
 ('BargainHunter', 'bargainhunter@example.com', 'savemoney', 'photo10.jpg', 'Finding the best deals on Lego sets.', 'inactive', 1);
-
-
 
 CREATE TABLE admin (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -99,5 +97,5 @@ VALUES
 
 CREATE TABLE tag (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    label VARCHAR
+    label VARCHAR(255)
     );
