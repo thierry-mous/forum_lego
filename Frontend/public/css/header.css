@@ -12,6 +12,7 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 .logo{
@@ -64,7 +65,7 @@ header{
     align-items: center;
     justify-content: space-between;
     width: 100%;   
-    background-color: #005AD2;
+    background-color: #CCCCCD;
     height: 110px;
 }
 
@@ -89,8 +90,7 @@ header{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-color: #CCCCCD
-    red;
+    background-color: #005AD2;
     width: 100%;
     height: 30px;
 }
