@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
 footer {
     background-color: #66a3b5;
 }
@@ -29,6 +31,8 @@ footer {
 }
 
 a {
-    text-decoration: none;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    text-decoration: none; 
     color: black;
 }

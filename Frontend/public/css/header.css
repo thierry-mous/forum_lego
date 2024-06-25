@@ -23,7 +23,7 @@ header{
     height: 100px;
 }
 
-.category h1 {
+.category a {
     font-family: "Open Sans", sans-serif;
     font-size: 20px;
     color: white;
