@@ -44,10 +44,10 @@ const registerUser = async (req, res) => {
 };
 
 const authenticateUser = async (req, res) => {
-    const { username, password } = req.body;
+    const { usernameOrEmail, password } = req.body;
 
     try {
-        const user = await userModel.getUserByUsername(username);
+        const user = await userModel.getUserByUsernameOrEmail(usernameOrEmail);
 
         if (!user) {
             return res.status(404).send('User not found');
