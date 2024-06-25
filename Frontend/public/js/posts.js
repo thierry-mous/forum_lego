@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(response => response.json())
     .then(posts => {
         const postsContainer = document.getElementById('postsContainer');
-        postsContainer.innerHTML = ''; // Effacer les posts précédents
+        postsContainer.innerHTML = '';
         posts.forEach(post => {
             const postElement = document.createElement('div');
             postElement.classList.add('post');

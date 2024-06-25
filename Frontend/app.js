@@ -38,6 +38,9 @@ app.get('/legal', (req, res) => {
     res.sendFile(join(__dirname, 'templates', 'legalmentions.html'));
 });
 
+app.get('/posts', (req, res) => {
+    res.sendFile(join(__dirname, 'templates', 'posts.html'));
+});
 
 
 const PORT = process.env.PORT || 8080;

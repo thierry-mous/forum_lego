@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const container = document.getElementById('topicsContainer');
         data.forEach(topic => {
             const topicElement = document.createElement('a');
-            topicElement.href = `posts.html?id=${topic.id}`;
+            topicElement.href = `posts?id=${topic.id}`;
             topicElement.classList.add('post-link');
             topicElement.innerHTML = `
                 <div class="post">
