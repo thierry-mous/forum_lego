@@ -1,15 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
-/* h1 {
-    font-family: "Open Sans", sans-serif;
-    font-size: 25px;
-    color: white;
-    text-shadow:
-        -2px -2px 0 #000,
-        2px -2px 0 #000,
-        -2px 2px 0 #000,
-        2px 2px 0 #000;
-} */
+
 
 .category_footer h2 {
     font-size: 15px;
@@ -69,13 +60,11 @@ banner img {
 }
 
 .box img {
-    width: 200px;
     height: 130px;
 
 }
 
 .box {
-    width: 200px;
     height: 250px;
     display: flex;
     flex-direction: column;

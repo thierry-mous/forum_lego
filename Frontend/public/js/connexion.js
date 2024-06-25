@@ -19,6 +19,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     })
     .then(data => {
         console.log(data);
+        window.location.href = '/profile';
     })
     .catch(error => {
         console.error('Error:', error);
