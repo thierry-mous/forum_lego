@@ -31,12 +31,13 @@ app.get('/profile', (req, res) => {
 });
 
 app.get('/about', (req, res) => {
-    res.sendFile(join(__dirname, 'templates', 'about.html'));
+    res.sendFile(join(dirname, 'templates', 'about.html'));
 });
 
 app.get('/legal', (req, res) => {
     res.sendFile(join(__dirname, 'templates', 'legalmentions.html'));
 });
+
 
 
 const PORT = process.env.PORT || 8080;
