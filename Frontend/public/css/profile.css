@@ -6,3 +6,67 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
 }
+
+.box1 {
+    display: flex;
+    align-items: first baseline;
+    gap: 200px;
+    margin-top: 20px;
+}
+
+.bio-container {
+    padding: 10px;
+    box-sizing: border-box;
+    max-width: 100%; 
+    white-space: pre-wrap; 
+}
+
+#bio-text, #bio-input {
+    width: 100%; 
+    box-sizing: border-box; 
+    white-space: pre-wrap; 
+    word-wrap: break-word; 
+}
+
+#edit-button, #save-button {
+    position: absolute; 
+    margin-top: 10px;
+}
+
+
+.hidden {
+    display: none;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.box2{
+    display: flex;
+    align-items: start;
+   gap: 200px;
+}
+
+.allbio{
+    width: 100%;
+
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #006eb6;
+    padding: 20px;
+}
+.img-profile img{
+    width: 300px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.title{
+    text-align: center;
+    font-size: 30px;
+    color: #006eb6;
+}

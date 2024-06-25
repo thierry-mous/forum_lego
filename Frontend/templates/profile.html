@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>index</title>
         <link rel="stylesheet" href="/public/css/header.css">
-        <link rel="stylesheet" href="/public/css/index.css">
+        <link rel="stylesheet" href="/public/css/profile.css">
         <link rel="stylesheet" href="/public/css/footer.css">
     </head>
 
@@ -33,12 +33,36 @@
             </div>
         </div>
     </header>
-    <h1>Your profile</h1>
+    <h1 class="title">Your profile</h1>
     <div class="allbox">
-        <div>
-            <img src="" alt="image de profil">
+        <div class="box1">
+            <div class="img-profile">
+                <img src="/public/img/pplego.png" alt="image de profil">
+            </div>
+            <div class="info">
+                <h2>Username</h2>
+                <p>email</p>
+            </div>
+        </div>
+        <div class="box2">
+            <div class="lastco_nbtopic">
+                <h2>lastco</h2>
+                <h2>nbtopic</h2>
+                <h2>role</h2>
+            </div>
+            <div class="allbio">
+                <h2>biographie</h2>
+                <div class="bio-container">
+                    <p id="bio-text">Ceci est la biographie de l'utilisateur.</p>
+                    <textarea id="bio-input" class="hidden"></textarea>
+                </div>
+                <button id="edit-button">Edit Bio</button>
+                <button id="save-button" class="hidden">Save</button>
+            </div>
         </div>
     </div>
+    </div>
+
 
 
 
@@ -55,6 +79,7 @@
                 <a href="">profile</a>
                 <a href="">my fav</a>
     </footer>
+    <script src="/public/js/profile.js"></script>
 </body>
 
 </html>

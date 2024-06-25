@@ -30,8 +30,12 @@ app.get('/profile', (req, res) => {
     res.sendFile(join(__dirname, 'templates', 'profile.html'));
 });
 
-app.get('/posts', (req, res) => {
-    res.sendFile(join(__dirname, 'templates', 'posts.html'));
+app.get('/about', (req, res) => {
+    res.sendFile(join(__dirname, 'templates', 'about.html'));
+});
+
+app.get('/legal', (req, res) => {
+    res.sendFile(join(__dirname, 'templates', 'legalmentions.html'));
 });
 
 
