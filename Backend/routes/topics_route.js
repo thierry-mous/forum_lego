@@ -1,5 +1,5 @@
 const express = require('express');
-const { registerUser, authenticateUser } = require('../controller/topics_controller');
+const { createTopic, getTopics } = require('../controller/topics_controller');
 
 const router = express.Router();
 

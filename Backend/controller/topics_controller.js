@@ -1,4 +1,4 @@
-const userModel = require('../modeles/inscription_modeles.js');
+const userModel = require('../modeles/topics_modeles.js');
 
 const createTopic = async (topic) => {
     try {
