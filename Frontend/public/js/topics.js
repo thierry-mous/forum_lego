@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const container = document.getElementById('topicsContainer');
         data.forEach(topic => {
             const topicElement = document.createElement('a');
-            topicElement.href = `topic${topic.id}.html`;
+            topicElement.href = `posts.html?id=${topic.id}`;
             topicElement.classList.add('post-link');
             topicElement.innerHTML = `
                 <div class="post">
@@ -29,5 +29,41 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     .catch(error => {
         console.error('Error:', error);
+    });
+
+    document.addEventListener('click', function(event) {
+        if (event.target.classList.contains('post-link')) {
+            event.preventDefault();
+            const topicId = event.target.dataset.topicId;
+            fetch(`http://localhost:3000/api/topics/getPostsByTopicId/${topicId}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(posts => {
+                const postsContainer = document.getElementById('postsContainer');
+                postsContainer.innerHTML = ''; // Effacer les posts précédents
+                posts.forEach(post => {
+                    const postElement = document.createElement('div');
+                    postElement.classList.add('post');
+                    postElement.innerHTML = `
+                        <div class="user-info">
+                            <p class="username">${post.author}</p>
+                            <p class="user-role">Member</p>
+                        </div>
+                        <div class="post-content">
+                            <p class="post-date">Posted on: ${new Date(post.publish_date).toLocaleDateString()}</p>
+                            <p class="post-text">${post.body}</p>
+                        </div>
+                    `;
+                    postsContainer.appendChild(postElement);
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
     });
 });

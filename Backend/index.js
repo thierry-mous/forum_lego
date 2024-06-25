@@ -18,9 +18,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/public/', express.static(path.join(__dirname, 'public')));
-
 app.use('/api/users', userRoutes);
-
 app.use('/api/topics', topicRoutes);
 
 app.listen(3000, () => {

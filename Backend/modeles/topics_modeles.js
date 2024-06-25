@@ -1,14 +1,5 @@
-const db = require('../utility/config');
 
-const createTopic = (topic) => {
-    return new Promise((resolve, reject) => {
-        const sql = 'INSERT INTO topics SET ?';
-        db.query(sql, topic, (err, result) => {
-            if (err) return reject(err);
-            resolve(result);
-        });
-    });
-}
+const db = require('../utility/config');
 
 const getTopics = () => {
     return new Promise((resolve, reject) => {
@@ -21,9 +12,22 @@ const getTopics = () => {
             }
         });
     });
-}
+};
+
+const getPostsByTopicId = (topicId) => {
+    return new Promise((resolve, reject) => {
+        const sql = 'SELECT * FROM post WHERE topics_id = ?';
+        db.query(sql, topicId, (err, results) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(results);
+            }
+        });
+    });
+};
 
 module.exports = {
-    createTopic,
-    getTopics
+    getTopics,
+    getPostsByTopicId
 };

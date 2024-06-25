@@ -1,12 +1,5 @@
 const userModel = require('../modeles/topics_modeles.js');
 
-const createTopic = async (topic) => {
-    try {
-        await userModel.createTopic(topic);
-    } catch (err) {
-        console.log(err);
-    }
-};
 
 const getTopics = async (req, res) => {
     try {
@@ -18,7 +11,21 @@ const getTopics = async (req, res) => {
     }
 };
 
+const getPostsByTopicId = async (req, res) => {
+    const { topicId } = req.params;
+
+    try {
+        const posts = await userModel.getPostsByTopicId(topicId);
+        res.status(200).send(posts);
+    } catch (err) {
+        console.log(err);
+        res.status(500).send('Server error');
+    }
+}
+
+
+
 module.exports = {
-    createTopic,
-    getTopics
+    getTopics,
+    getPostsByTopicId
 };
