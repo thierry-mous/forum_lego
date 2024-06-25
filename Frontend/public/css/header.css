@@ -23,7 +23,7 @@ header{
     height: 100px;
 }
 
-.category h1 {
+.category a {
     font-family: "Open Sans", sans-serif;
     font-size: 20px;
     color: white;
@@ -64,7 +64,7 @@ header{
     align-items: center;
     justify-content: space-between;
     width: 100%;   
-    background-color: #66a3b5;
+    background-color: #006eb6;
     height: 110px;
 }
 

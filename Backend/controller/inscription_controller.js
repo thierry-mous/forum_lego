@@ -1,5 +1,5 @@
 const crypto = require('crypto');
-const userModel = require('../modeles/modeles');
+const userModel = require('../modeles/inscription_modeles.js');
 
 const registerUser = async (req, res) => {
     const { username, email, password } = req.body;
@@ -44,10 +44,10 @@ const registerUser = async (req, res) => {
 };
 
 const authenticateUser = async (req, res) => {
-    const { username, password } = req.body;
+    const { usernameOrEmail, password } = req.body;
 
     try {
-        const user = await userModel.getUserByUsername(username);
+        const user = await userModel.getUserByUsernameOrEmail(usernameOrEmail);
 
         if (!user) {
             return res.status(404).send('User not found');

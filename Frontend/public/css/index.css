@@ -1,15 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
-/* h1 {
-    font-family: "Open Sans", sans-serif;
-    font-size: 25px;
-    color: white;
-    text-shadow:
-        -2px -2px 0 #000,
-        2px -2px 0 #000,
-        -2px 2px 0 #000,
-        2px 2px 0 #000;
-} */
+
 
 .category_footer h2 {
     font-size: 15px;
@@ -63,19 +54,17 @@ banner img {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color:#66a3b5;
+    background-color: #006eb6;
     width: 100%;
     margin-bottom: 50px;
 }
 
 .box img {
-    width: 200px;
     height: 130px;
 
 }
 
 .box {
-    width: 200px;
     height: 250px;
     display: flex;
     flex-direction: column;
@@ -104,3 +93,8 @@ banner img {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;}
+
+.index_bg img {
+    height: 100%;
+    width: 100%;
+}

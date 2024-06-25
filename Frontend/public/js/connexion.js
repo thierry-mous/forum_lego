@@ -1,7 +1,7 @@
 document.getElementById('loginForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
-    const username = document.getElementById('username').value;
+    const usernameOrEmail = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
     fetch('http://localhost:3000/api/users/login', {
@@ -9,7 +9,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ usernameOrEmail, password }),
     })
     .then(response => {
         if (!response.ok) {
@@ -18,7 +18,8 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         return response.text();
     })
     .then(data => {
-        console.log(data)
+        console.log(data);
+        window.location.href = '/profile';
     })
     .catch(error => {
         console.error('Error:', error);
