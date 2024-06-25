@@ -26,6 +26,9 @@ app.get('/topics', (req, res) => {
     res.sendFile(join(__dirname, 'templates', 'topics.html'));
 });
 
+app.get('/profile', (req, res) => {
+    res.sendFile(join(__dirname, 'templates', 'profile.html'));
+});
 
 
 
