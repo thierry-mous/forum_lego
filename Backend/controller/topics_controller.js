@@ -11,6 +11,7 @@ const getTopics = async (req, res) => {
     }
 };
 
+
 const getPostsByTopicId = async (req, res) => {
     const { topicId } = req.params;
 
