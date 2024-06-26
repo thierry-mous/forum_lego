@@ -22,25 +22,19 @@ document.getElementById('inscription').addEventListener('submit', function (e) {
         return;
     }
 
-    fetch('http://localhost:3000/api/users/signup', {
+        fetch('http://localhost:3000/api/users/signup', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ username, email, password })
     })
-    .then(response => response.json())
+    .then(response => response.text())
     .then(data => {
-        if (data.success) {
-            alert('Account created successfully! Redirecting to login page...');
-            window.location.href = 'http://localhost:8080/login';
-        } else {
-            showErrorMessage('Error creating account: ' + data.message);
-        }
+        window.location.href = 'http://localhost:8080/login';
     })
     .catch(error => {
         console.error('Error:', error);
-        showErrorMessage('An error occurred while creating the account.');
     });
 });
 
