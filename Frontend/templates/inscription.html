@@ -9,51 +9,50 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>index</title>
-        <link rel="stylesheet" href="/public/css/style.css">
-        <link rel="stylesheet" href="/public/css/header.css">
+        <link rel="stylesheet" href="/public/css/inscription.css">
     </head>
 
 <body>
     <div class="main_ctn">
         <div class="sub_ctn">
-            <div class="logo_ctn">
-                <img id="logo" src="/public/img/logo_transparent.png" alt="">
-                <a class="a_arrow" href="/">
-                    <img id="arrow" src="/public/img/fleche_transparent.png" alt="">
-                </a>
-            </div>
-            <div class="text">
+            <div class="inscription_ctn">
+                <div class="redirect">
+                    <a id="redirect" href="/login">Sign in <img id="fleche" src="public/img/flèche.png" alt=""></a>
+                </div>
                 <h1>Sign up</h1>
-                <p>Register with your personal details to use all the features</p>
+                <div class="formulaire">
+                    <form id="inscription">
+                        <ul>
+                            <li>
+                                <label for="username"></label>
+                                <input type="text" name="username" id="username" placeholder="Username" required>
+                            </li>
+                            <li>
+                                <label for="email"></label>
+                                <input type="email" name="email" id="email" placeholder="Email" required>
+                            </li>
+                            <li>
+                                <label for="password"></label>
+                                <input type="password" name="password" id="password" placeholder="Password" required>
+                            </li>
+                            <li>
+                                <input type="submit" value="Sign up ">
+                                
+                            </li>
+                        </ul>
+                    </form>
+                 
+                </div>
+                <p id="error-message"></p>
+               
             </div>
-            <div class="redirect_ctn">
-                <a class="redirect" href="/">Sign up</a>
-                <a class="redirect" href="/login">Sign in</a>
-            </div>
-            <div class="formulaire">
-                <form id="inscription">
-                    <ul>
-                        <li>
-                            <label for="username"></label>
-                            <input type="text" name="username" id="username" placeholder="Username" required>
-                        </li>
-                        <li>
-                            <label for="email"></label>
-                            <input type="email" name="email" id="email" placeholder="Email" required>
-                        </li>
-                        <li>
-                            <label for="password"></label>
-                            <input type="password" name="password" id="password" placeholder="Password" required>
-                        </li>
-                        <li>
-                            <input type="submit" value="Sign up ">
-                        </li>
-                    </ul>
-                </form>
+            <div class="image_ctn">
+                <img id="side_img" src="public/img/batman_superman.png" alt="">
             </div>
         </div>
     </div>
-    <script src="./public/js/inscription.js"></script>
+
+<script src="./public/js/inscription.js"></script>
 
 </body>
 
