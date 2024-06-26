@@ -99,10 +99,9 @@ const updateUsers = async (req, res) => {
 
         await userModel.updateUsers(id, biography);
 
-        // Récupérer à nouveau l'utilisateur mis à jour
         const updatedUser = await userModel.getUserById(id);
 
-        return res.status(200).json(updatedUser); // Renvoyer l'utilisateur mis à jour au format JSON
+        return res.status(200).json(updatedUser); 
     } catch (err) {
         console.error(err);
         return res.status(500).send('Server error');
