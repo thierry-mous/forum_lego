@@ -1,0 +1,70 @@
+/* Reset des styles et base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f6f6f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.post {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+.user-info {
+    margin-bottom: 10px;
+}
+
+.username {
+    font-weight: bold;
+    color: #0079d3; /* Couleur de Reddit pour les liens */
+}
+
+.user-role {
+    font-size: 12px;
+    color: #666;
+}
+
+.post-date {
+    font-size: 12px;
+    color: #888;
+}
+
+.post-text {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.header {
+    background-color: #0079d3;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
