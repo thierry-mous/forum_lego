@@ -14,14 +14,15 @@ document.addEventListener('DOMContentLoaded', function() {
             topicElement.classList.add('post-link');
             topicElement.innerHTML = `
                 <div class="post">
+                <div class="post-content">
+                        <p class="post-date">Posted on: ${new Date(topic.publish_date).toLocaleDateString()}</p>
+                        <p class="post-text">${topic.title}</p>
+                    </div>
                     <div class="user-info">
                         <p class="username">${topic.username}</p>
                                 <p class="user-role">${topic.admin_status}</p>
                     </div>
-                    <div class="post-content">
-                        <p class="post-date">Posted on: ${new Date(topic.publish_date).toLocaleDateString()}</p>
-                        <p class="post-text">${topic.body}</p>
-                    </div>
+                    
                 </div>
             `;
             container.appendChild(topicElement);
