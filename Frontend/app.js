@@ -1,16 +1,32 @@
 const express = require('express');
 const {join, dirname} = require('path');
 
+const session = require('express-session');
+const { fileURLToPath } = require('url');
+
+
 const app = express();
+
+
+app.use(session({
+    secret : 'secret',
+    resave : false,
+    saveUninitialized : false,
+    cookie : {
+        secure : false,
+        maxAge : 1000 * 60 * 60 * 24
+    }
+}));
+
+
 
 
 
 app.use('/public/', express.static(join(__dirname, 'public')));
 
 
-const { fileURLToPath } = require('url');
-
 app.get('/', (req, res) => {
+    console.log(req.session);
     res.sendFile(join(__dirname, 'templates', 'index.html'));
 });
 
@@ -38,7 +54,7 @@ app.get('/legal', (req, res) => {
     res.sendFile(join(__dirname, 'templates', 'legalmentions.html'));
 });
 
-app.get('/createpost', (req, res) => {
+app.get('/createtopic', (req, res) => {
     res.sendFile(join(__dirname, 'templates', 'create_topics.html'));
 });
 

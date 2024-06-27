@@ -48,10 +48,11 @@ const getPostsByTopicId = (topicId) => {
 const getTopicsByTags = (tags) => {
     return new Promise((resolve, reject) => {
         const sql = `
-            SELECT topics.*, users.username, COALESCE(admin.admin_status, 'User') AS admin_status
+            SELECT topics.*, users.username, COALESCE(admin.admin_status, 'User') AS admin_status, tag.label AS tag_label
             FROM topics
             JOIN users ON topics.users_id = users.id
             LEFT JOIN admin ON users.admin_id = admin.id
+            LEFT JOIN tag ON topics.tags_id = tag.id
             WHERE topics.tags_id = ?
         `;
         db.query(sql, [tags], (err, results) => {

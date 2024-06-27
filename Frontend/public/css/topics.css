@@ -44,7 +44,7 @@ header p {
 
 .topic {
     margin-top: 20px;
-    width: 75%;
+    width: 95%;
 }
 
 .post-link {
@@ -54,29 +54,29 @@ header p {
 
 .post {
     display: flex;
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fafafa;
+    justify-content: space-between;
     transition: background-color 0.3s ease;
-    width: 98%;
+    width: 100%;
+    padding: 10px 0; 
+    border-bottom: 2px solid #ccc;
 }
+
 
 .post:hover {
     background-color: #f0f0f0;
 }
 
 .user-info {
+    display: flex;
+    justify-content: end;
+    align-items: center;
     width: 20%;
     text-align: center;
     padding-right: 10px;
-    border-right: 1px solid #ccc;
+    gap: 10px;
 }
 
-.user-info p {
-    margin: 5px 0;
-}
+
 
 .username {
     font-weight: bold;
@@ -84,12 +84,14 @@ header p {
 }
 
 .user-role {
-    font-size: 0.9em;
-    color: #777;
+    font-size: 12px;
+    font-weight: lighter;
+    color: rgb(102, 102, 102);
+
 }
 
 .post-content {
-    width: 80%;
+    width: 50%;
     padding-left: 10px;
 }
 
@@ -99,8 +101,10 @@ header p {
 }
 
 .post-text {
-    margin-top: 10px;
-    color: #333;
+    margin: 0;
+    color: rgb(102, 102, 102);
+    font-size: 16px;
+    font-weight: normal;
 }
 
 
@@ -114,7 +118,7 @@ header p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 75%;
+    width: 95%;
 }
 
 .bg_ctn {
@@ -122,14 +126,14 @@ header p {
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    width: 75%;
+    width: 50%;
     background-color: white;
     margin: 10px 0;
 }
 
 .size_sub {
     width: 100%;
-    padding: 10px;
+    padding: 10px 0;
     border-bottom: 2px solid #ccc;
     display: flex;
     align-items: center;

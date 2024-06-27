@@ -35,10 +35,12 @@ document.addEventListener('DOMContentLoaded', function() {
             if (data.length > 0) {
                 const firstTopic = data[0];
                 const categoryDiv = document.getElementsByClassName('categories')[0];
-                const tagParagraph = document.createElement('p');
-                tagParagraph.classList.add('cat_text');
-                tagParagraph.textContent = firstTopic.tag;
-                categoryDiv.appendChild(tagParagraph);
+                if (categoryDiv) {
+                    const tagParagraph = document.createElement('p');
+                    tagParagraph.classList.add('cat_text');
+                    tagParagraph.textContent = `${firstTopic.tag_label}`;
+                    categoryDiv.appendChild(tagParagraph);
+                }
             }
         })
         .catch(error => {
