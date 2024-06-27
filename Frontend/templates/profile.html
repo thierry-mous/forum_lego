@@ -1,18 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Accueil</title>
-    <html lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="/public/css/header.css">
+    <link rel="stylesheet" href="/public/css/profile.css">
+    <link rel="stylesheet" href="/public/css/footer.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>index</title>
-        <link rel="stylesheet" href="/public/css/header.css">
-        <link rel="stylesheet" href="/public/css/profile.css">
-        <link rel="stylesheet" href="/public/css/footer.css">
-    </head>
+</head>
 
 <body>
     <header class="index-head">
@@ -20,40 +18,46 @@
             <div class="logo-index">
                 <a href=""><img src="/public/img/logo_transparent.png" alt="logo brickodepot"></a>
             </div>
+            <div class="nav">
+                <a href="">Forum</a>
+                <a href="">Catégories <img id="flechebas" src="public/img/flechebas.png" alt=""></a>
+                <a href="">About us</a>
+                <a href="">Contacts</a>
+            </div>
             <div class="information">
-                <a href="/login">Connection</a>
+                <div class="connexion">
+                    <a id="sign_in" href="/sign_in">Sign in</a>
+                    <a id="sign_up" href="/sign_up">Sign up
+                        <img id="flèche" src="public/img/flèche.png" alt="">
+                    </a>
+                </div>
             </div>
         </div>
-        <div class="category">
-            <h1 href=""> Lego Super Hero</h1>
-            <h1 href="">Lego Technic</h1>
-            <h1 href="">Lego City</h1>
-            <div class="search">
-                <input type="text" placeholder="Search">
-            </div>
         </div>
     </header>
-    <h1 class="title">Your profile</h1>
+    <h1 class="title">Your Profile</h1>
     <div class="allbox">
         <div class="box1">
             <div class="img-profile">
-                <img src="/public/img/pplego.png" alt="image de profil">
+                <img id="profile-photo" src="/public/img/pplego.png" alt="Profile Picture">
             </div>
             <div class="info">
-                <h2>Username</h2>
-                <p>email</p>
-            </div>
+                <h2 id="username">Username <img id="edit-username-icon" src="/public/img/edit-icon.png" alt="Edit Username"></h2>
+                <input id="username-input" class="hidden" type="text" value="Username">
+                <button id="save-username-button" class="hidden">Save</button>
+                <p id="email">Email</p>
+            </div>            
         </div>
         <div class="box2">
             <div class="lastco_nbtopic">
-                <h2>lastco</h2>
-                <h2>nbtopic</h2>
-                <h2>role</h2>
+                <h2>Last Connection: <span id="lastco">---</span></h2>
+                <h2>Number of Topics: <span id="nbtopic">0</span></h2>
+                <h2>Role: <span id="role">User</span></h2>
             </div>
             <div class="allbio">
-                <h2>biographie</h2>
+                <h2>Biography</h2>
                 <div class="bio-container">
-                    <p id="bio-text">Ceci est la biographie de l'utilisateur.</p>
+                    <p id="bio-text">Loading biography...</p>
                     <textarea id="bio-input" class="hidden"></textarea>
                 </div>
                 <button id="edit-button">Edit Bio</button>
@@ -61,11 +65,6 @@
             </div>
         </div>
     </div>
-    </div>
-
-
-
-
     <footer>
         <div class="real-footer">
             <div class="left-info">
@@ -76,8 +75,10 @@
                 <img src="/public/img/logo_transparent.png" alt="">
             </div>
             <div class="right-info">
-                <a href="">profile</a>
-                <a href="">my fav</a>
+                <a href="">Profile</a>
+                <a href="">My Favorites</a>
+            </div>
+        </div>
     </footer>
     <script src="/public/js/profile.js"></script>
 </body>

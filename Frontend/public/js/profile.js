@@ -1,46 +1,68 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const bioInput = document.getElementById('bio-input');
-    const bioText = document.getElementById('bio-text');
+document.addEventListener("DOMContentLoaded", function () {
+    const userId = 1;
+
+    fetchUserProfile(userId);
+
     const editButton = document.getElementById('edit-button');
     const saveButton = document.getElementById('save-button');
+    const bioText = document.getElementById('bio-text');
+    const bioInput = document.getElementById('bio-input');
 
-    const maxLength = 245;
-
-    function formatBioText(text) {
-        let formattedText = '';
-        for (let i = 0; i < text.length; i += 60) {
-            formattedText += text.substring(i, i + 60) + '\n';
-        }
-        return formattedText.trim(); 
-    }
-
-    editButton.addEventListener('click', function() {
-        bioInput.value = bioText.innerText.trim().replace(/\n/g, '');
+    editButton.addEventListener('click', () => {
         bioText.classList.add('hidden');
         bioInput.classList.remove('hidden');
+        bioInput.value = bioText.textContent;
         editButton.classList.add('hidden');
         saveButton.classList.remove('hidden');
     });
 
-    saveButton.addEventListener('click', function() {
-        if (bioInput.value.length > maxLength) {
-            alert(`Biography cannot exceed ${maxLength} characters.`);
-            return;
-        }
-        bioText.innerText = formatBioText(bioInput.value.trim());
-        bioInput.classList.add('hidden');
-        bioText.classList.remove('hidden');
-        saveButton.classList.add('hidden');
-        editButton.classList.remove('hidden');
+    saveButton.addEventListener('click', () => {
+        const newBio = bioInput.value;
+        updateBiography(userId, newBio);
     });
 
-   
-    bioInput.addEventListener('input', function() {
-        if (bioInput.value.length > maxLength) {
-            bioInput.value = bioInput.value.substring(0, maxLength);
-        }
-    });
+    function fetchUserProfile(userId) {
+        axios.get(`http://localhost:3000/api/users/profile/${userId}`)
+            .then(response => {
+                if (!response.data) {
+                    throw new Error('No data received');
+                }
+                const data = response.data;
 
+                if (typeof data === 'object') {
+                    document.getElementById('profile-photo').src = data.photo || '/public/img/pplego.png';
+                    document.getElementById('username').textContent = data.username;
+                    document.getElementById('email').textContent = data.email;
+                    document.getElementById('lastco').textContent = data.last_connection || 'N/A';
+                    document.getElementById('nbtopic').textContent = data.nb_topics || 'N/A';
+                    document.getElementById('role').textContent = data.role || 'User';
+                    document.getElementById('bio-text').textContent = data.biography || 'No biography set';
+                } else {
+                    console.log('Response message:', data);
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching user profile:', error);
+            });
+    }
 
-    bioText.innerText = formatBioText(bioText.innerText.trim());
+    function updateBiography(userId, newBio) {
+        axios.put(`http://localhost:3000/api/users/profile/${userId}`, { biography: newBio }, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            const updatedBio = response.data.biography;
+            bioText.textContent = updatedBio;
+            console.log('Biography updated successfully:', updatedBio);
+            bioText.classList.remove('hidden');
+            bioInput.classList.add('hidden');
+            editButton.classList.remove('hidden');
+            saveButton.classList.add('hidden');
+        })
+        .catch(error => {
+            console.error('Error updating biography:', error);
+        });
+    }
 });

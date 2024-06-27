@@ -17,7 +17,7 @@ const registerUser = async (req, res) => {
     }
 
     try {
-        const hash = crypto.createHash('sha512').update(password).digest('hex');
+        const hash = crypto.createHash('sha256').update(password).digest('hex');
 
         const newUser = {
             username,
@@ -53,15 +53,13 @@ const authenticateUser = async (req, res) => {
             return res.status(404).send('User not found');
         }
 
-        const hash = crypto.createHash('sha512').update(password).digest('hex');
-
-        console.log('Hash from input:', hash);
-        console.log('Stored hash:', user.user_password);
+        const hash = crypto.createHash('sha256').update(password).digest('hex');
 
         if (user.user_password !== hash) {
             return res.status(401).send('Invalid password');
         }
 
+    
         return res.status(200).send('Login successful');
     } catch (err) {
         console.error(err);
@@ -69,6 +67,44 @@ const authenticateUser = async (req, res) => {
     }
 };
 
+const getUserById = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const user = await userModel.getUserById(id);
+
+        if (!user) {
+            return res.status(404).send('User not found');
+        }
+
+        return res.status(200).send(user);
+    } catch (err) {
+        console.error(err);
+        return res.status(500).send('Server error');
+    }
+};
+
+const updateUsers = async (req, res) => {
+    const { id } = req.params;
+    const { biography } = req.body;
+
+    try {
+        const user = await userModel.getUserById(id);
+
+        if (!user) {
+            return res.status(404).send('User not found');
+        }
+
+        await userModel.updateUsers(id, biography);
+
+        const updatedUser = await userModel.getUserById(id);
+
+        return res.status(200).json(updatedUser); 
+    } catch (err) {
+        console.error(err);
+        return res.status(500).send('Server error');
+    }
+};
 
 function isUsernameValid(username) {
     const regex = /^[a-zA-Z0-9]{3,20}$/;
@@ -89,8 +125,9 @@ function isPasswordValid(password) {
     return regexUpper.test(password) && regexSpecial.test(password);
 }
 
-
 module.exports = {
     registerUser,
-    authenticateUser
+    authenticateUser,
+    getUserById,
+    updateUsers
 };

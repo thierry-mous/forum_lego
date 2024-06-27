@@ -28,10 +28,36 @@ const getUserByUsernameOrEmail = (usernameOrEmail) => {
 };
 
 
+const getUserById = (id) => {
+    return new Promise((resolve, reject) => {
+        const sql = 'SELECT * FROM users WHERE id = ?';
+        db.query(sql, [id], (err, results) => {
+            if (err) {
+                reject(err);
+            } else {
+                if (results.length > 0) {
+                    resolve(results[0]);
+                } else {
+                    resolve(null);
+                }
+            }
+        });
+    });
+};
 
-
+const updateUsers = (id, biography) => {
+    return new Promise((resolve, reject) => {
+        const sql = 'UPDATE users SET biography = ? WHERE id = ?';
+        db.query(sql, [biography, id], (err, result) => {
+            if (err) return reject(err);
+            resolve(result);
+        });
+    });
+};
 
 module.exports = {
     createUser,
-    getUserByUsernameOrEmail
+    getUserByUsernameOrEmail,
+    getUserById,
+    updateUsers
 };

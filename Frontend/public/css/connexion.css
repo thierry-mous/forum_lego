@@ -1,0 +1,139 @@
+body {
+    background-color: #d9d9d9;
+    height: 100vh;
+    margin: 0;
+}
+
+.main_ctn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.sub_ctn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 50%;
+    height: 60%;
+    background-color: white;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.inscription_ctn {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+.image_ctn {
+    width: 50%;
+    height: 100%;
+
+}
+
+#side_img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px 0 0 10px ;
+
+}
+
+.formulaire {
+    width: 300px;
+}
+
+form ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+form li {
+    margin-bottom: 1rem;
+}
+
+form li:last-child {
+    margin-bottom: 0;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px 5px;
+    margin-top: 5px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    box-sizing: border-box;
+    font-size: 14px;
+    background: none;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-bottom: 2px solid #007bff;
+    outline: none;
+    box-shadow: none;
+}
+
+input[type="submit"] {
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+#error-message {
+    color: red;
+    font-size: 14px;
+    width: 300px;
+    height: 10%;
+}
+
+.redirect {
+    display: flex;
+    justify-content: end;
+    width: 90%;
+}
+
+#redirect {
+    color: #d9d9d9;
+    background-color: #000;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#redirect:hover {
+    background-color: rgb(51 51 51);
+    border-color:rgb(51 51 51);
+}
+
+#fleche {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+
+}

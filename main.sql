@@ -77,7 +77,16 @@ CREATE TABLE post(
 
 INSERT INTO post (body, publish_date, author, topics_id, users_id)
 VALUES 
-('I am so excited for the new Star Wars set! Cant wait to get it.', '2024-06-01', 'LegoFan123', 1, 1),
+('The new Star Wars Lego set is coming out next month! Excited to see all the new pieces.', '2024-06-01', 'LegoFan123', 1, 1),
+('I heard it includes a new type of lightsaber piece. Can’t wait to see it in person!', '2024-06-02', 'StarWarsFan2', 1, 2),
+('I hope they include more minifigures in this set. The more, the better!', '2024-06-03', 'StarWarsFan3', 1, 3),
+('Does anyone know if this set will have any exclusive minifigures?', '2024-06-04', 'StarWarsFan4', 1, 4),
+('I read somewhere that it will have a new version of Luke Skywalker!', '2024-06-05', 'StarWarsFan5', 1, 5),
+('That’s awesome! I’m definitely going to pre-order it as soon as possible.', '2024-06-06', 'StarWarsFan6', 1, 6),
+('Has anyone seen the leaked images? The set looks incredible!', '2024-06-07', 'StarWarsFan7', 1, 7),
+('Yes, the details on the new X-Wing are amazing. They’ve really outdone themselves.', '2024-06-08', 'StarWarsFan8', 1, 8),
+('I’m curious about the price. Does anyone have any information on that?', '2024-06-09', 'StarWarsFan9', 1, 9),
+('I think it’s going to be around $150, but it looks like it will be worth it!', '2024-06-10', 'StarWarsFan10', 1, 10),
 ('Using Technic pieces is a great idea! I also use them for my large builds.', '2024-06-02', 'BrickMaster', 2, 2),
 ('I display my collection on custom-built shelves. They look amazing!', '2024-06-03', 'LegoCollector', 3, 3),
 ('I have tried customizing minifigures. Paint and decals work great!', '2024-06-04', 'CustomLegoFan', 4, 4),

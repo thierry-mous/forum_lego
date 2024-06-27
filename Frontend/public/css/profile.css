@@ -70,3 +70,20 @@ textarea {
     font-size: 30px;
     color: #006eb6;
 }
+
+#edit-username-icon {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+#username-input, #save-username-button {
+    margin-top: 10px;
+    vertical-align: middle;
+}
+
+.hidden {
+    display: none;
+}
