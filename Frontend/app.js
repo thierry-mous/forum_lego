@@ -11,19 +11,19 @@ app.use('/public/', express.static(join(__dirname, 'public')));
 const { fileURLToPath } = require('url');
 
 app.get('/', (req, res) => {
-    res.sendFile(join(__dirname, 'templates', 'index.html'));
+    res.sendFile(join(dirname, 'templates', 'index.html'));
 });
 
 app.get('/login', (req, res) => {
-    res.sendFile(join(__dirname, 'templates', 'connexion.html'));
+    res.sendFile(join(dirname, 'templates', 'connexion.html'));
 });
 
 app.get('/sign_up', (req, res) => {
-    res.sendFile(join(__dirname, 'templates', 'inscription.html'));
+    res.sendFile(join(dirname, 'templates', 'inscription.html'));
 });
 
 app.get('/topics', (req, res) => {
-    res.sendFile(join(__dirname, 'templates', 'topics.html'));
+    res.sendFile(join(dirname, 'templates', 'topics.html'));
 });
 
 app.get('/profile', (req, res) => {
@@ -31,24 +31,14 @@ app.get('/profile', (req, res) => {
 });
 
 app.get('/about', (req, res) => {
-    res.sendFile(join(__dirname, 'templates', 'about.html'));
+    res.sendFile(join(dirname, 'templates', 'about.html'));
 });
 
 app.get('/legal', (req, res) => {
-    res.sendFile(join(__dirname, 'templates', 'legalmentions.html'));
+    res.sendFile(join(dirname, 'templates', 'legalmentions.html'));
 });
 
-app.get('/posts', (req, res) => {
-    res.sendFile(join(__dirname, 'templates', 'posts.html'));
-});
 
-app.get('/createpost', (req, res) => {
-    res.sendFile(join(__dirname, 'templates', 'create_topics.html'));
-});
-
-app.get('/changeinfouser', (req, res) => {
-    res.sendFile(join(__dirname, 'templates', 'info_change.html'));
-});
 
 const PORT = process.env.PORT || 8080;
 
