@@ -5,6 +5,15 @@ body {
     padding: 0;
 }
 
+.all-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color:#d9d9d9 ;
+}
+
 .container {
     width: 80%;
     margin: 0 auto;
@@ -35,6 +44,7 @@ header p {
 
 .topic {
     margin-top: 20px;
+    width: 75%;
 }
 
 .post-link {
@@ -98,4 +108,62 @@ header p {
     font-size: 1.5em;
     color: #0073e6;
     margin-bottom: 20px;
+}
+
+.sub_ctn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 75%;
+}
+
+.bg_ctn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    width: 75%;
+    background-color: white;
+    margin: 10px 0;
+}
+
+.size_sub {
+    width: 100%;
+    padding: 10px;
+    border-bottom: 2px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cat_tri {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 40%;
+}
+
+.categories {
+    border-right: 1px solid #ccc;
+
+}
+
+.cat_text {
+    font-size: 15px;
+    margin : 5px 20px 5px 0;
+}
+
+.create_btn {
+    background-color: #000;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: lighter;
+}
+
+.label1 {
+    font-size: 15px;
+    color: rgb(102, 102, 102);
 }

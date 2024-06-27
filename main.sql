@@ -52,18 +52,18 @@ CREATE TABLE topics(
     FOREIGN KEY (tags_id) REFERENCES tag(id)
 );
 
-INSERT INTO topics (title, body, publish_date, author, state, users_id, tags_id)
+INSERT INTO topics (title, body, publish_date, state, users_id, tags_id)
 VALUES 
-('New Lego Set Announcement', 'The new Star Wars Lego set is coming out next month! Excited to see all the new pieces.', '2024-06-01', 'LegoFan123', 'published', 1, 1),
-('Best Techniques for Building', 'Share your best techniques for building complex Lego structures. I personally love using Technic pieces for stability.', '2024-06-02', 'MasterBuilder', 'published', 2, 2),
-('Lego Collections', 'How do you display your Lego collections? I use glass cabinets to keep them dust-free.', '2024-06-03', 'BrickLover', 'published', 3, 3),
-('Custom Lego Minifigures', 'Has anyone tried creating custom minifigures? I am looking for tips and resources.', '2024-06-04', 'MinifigMaker', 'draft', 4 , 4),
-('Lego Stop Motion Videos', 'I am making a Lego stop motion video. Any advice on lighting and camera settings?', '2024-06-05', 'StopMotionPro', 'published', 5, 5),
-('Lego for Education', 'Discussing how Lego can be used as an educational tool in classrooms.', '2024-06-06', 'EduBuilder', 'draft', 6 ,6),
-('Rare Lego Pieces', 'What are the rarest Lego pieces you own? I have a chrome gold C-3PO minifigure.', '2024-06-07', 'CollectorJoe', 'published', 7, 7),
-('Lego Competitions', 'Are there any upcoming Lego building competitions? I am eager to participate.', '2024-06-08', 'CompetitiveBuilder', 'published', 8, 8),
-('Lego Movie Discussion', 'Lets talk about the latest Lego movie. What did you think of the plot and the animation?', '2024-06-09', 'MovieCritic', 'published', 9, 9),
-('Lego Deals and Discounts', 'Share any current deals and discounts on Lego sets you find online.', '2024-06-10', 'BargainHunter', 'draft', 10, 10);
+('New Lego Set Announcement', 'The new Star Wars Lego set is coming out next month! Excited to see all the new pieces.', '2024-06-01',  'published', 1, 1),
+('Best Techniques for Building', 'Share your best techniques for building complex Lego structures. I personally love using Technic pieces for stability.', '2024-06-02', 'published', 2, 2),
+('Lego Collections', 'How do you display your Lego collections? I use glass cabinets to keep them dust-free.', '2024-06-03', 'published', 3, 3),
+('Custom Lego Minifigures', 'Has anyone tried creating custom minifigures? I am looking for tips and resources.', '2024-06-04', 'draft', 4 , 4),
+('Lego Stop Motion Videos', 'I am making a Lego stop motion video. Any advice on lighting and camera settings?', '2024-06-05',  'published', 5, 5),
+('Lego for Education', 'Discussing how Lego can be used as an educational tool in classrooms.', '2024-06-06', 'draft', 6 ,6),
+('Rare Lego Pieces', 'What are the rarest Lego pieces you own? I have a chrome gold C-3PO minifigure.', '2024-06-07',  'published', 7, 7),
+('Lego Competitions', 'Are there any upcoming Lego building competitions? I am eager to participate.', '2024-06-08',  'published', 8, 8),
+('Lego Movie Discussion', 'Lets talk about the latest Lego movie. What did you think of the plot and the animation?', '2024-06-09', 'published', 9, 9),
+('Lego Deals and Discounts', 'Share any current deals and discounts on Lego sets you find online.', '2024-06-10', 'draft', 10, 10);
 
 
 CREATE TABLE post(

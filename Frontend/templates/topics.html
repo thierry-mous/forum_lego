@@ -19,7 +19,7 @@
             <div class="nav">
                 <a href="">Forum</a>
                 <a href="">Catégories <img id="flechebas" src="public/img/flechebas.png" alt=""></a>
-                <a href="">About us</a>
+                <a href="/about">About us</a>
                 <a href="">Contacts</a>
             </div>
             <div class="information">
@@ -34,7 +34,30 @@
         </div>
     </header>
     <div class="all-body">
-        <div id="topicsContainer" class="topic">
+        <div class="bg_ctn">
+            <div class="size_sub"> 
+                <div class="sub_ctn">
+                    <div class="cat_tri">
+                        <div class="categories">
+                            <p class="cat_text">Star Wars</p>
+                        </div>
+                        <div class="tri">
+                            <form>
+                                <label class="label1" for="tri">Sort by:</label>
+                                <select name="tri" id="tri">
+                                    <option value="recent">Most recent</option>
+                                    <option value="popular">Most popular</option>
+                                </select>                                
+                            </form>
+                        </div>
+                    </div>
+                    <div class="create-topic">
+                        <a class="create_btn" href="/create_topic">Create a topic</a>
+                        </div>
+                    </div>
+                </div>
+            <div id="topicsContainer" class="topic">
+            </div>
         </div>
     </div>
     <footer>
@@ -49,7 +72,6 @@
             <div class="right-info">
                 <a href="/profile">Profile</a>
     </footer>
-
     <script src="/public/js/topics.js"></script>
 </body>
 
