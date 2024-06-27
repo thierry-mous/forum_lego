@@ -1,4 +1,4 @@
-.update-container {
+.change-container {
     max-width: 100%;
     margin: 20px auto;
     padding: 20px;
@@ -8,7 +8,7 @@
     height: 100vh;
 }
 
-.update-container h2 {
+.change-container h2 {
     text-align: center;
     margin-bottom: 20px;
 }
@@ -44,7 +44,7 @@
     border-color: #007bff;
 }
 
-#update-btn {
+#change-btn {
     display: block;
     width: 100%;
     padding: 10px;
@@ -56,7 +56,7 @@
     font-size: 16px;
 }
 
-#update-btn:hover {
+#change-btn:hover {
     background-color: #0056b3;
 }
 
