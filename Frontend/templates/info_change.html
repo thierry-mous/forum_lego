@@ -9,52 +9,55 @@
     <link rel="stylesheet" href="/public/css/info_change.css">
     <link rel="stylesheet" href="/public/css/footer.css">
 </head>
-        <body>
-            <header class="index-head">
-                <div class="header-logo">
-                    <div class="logo-index">
-                        <a href=""><img src="/public/img/logo_transparent.png" alt="logo brickodepot"></a>
-                    </div>
-                    <div class="nav">
-                        <a href="">Forum</a>
-                        <a href="">Catégories <img id="flechebas" src="public/img/flechebas.png" alt=""></a>
-                        <a href="">About us</a>
-                        <a href="">Contacts</a>
-                    </div>
-                    <div class="information">
-                        <div class="connexion">
-                            <a id="sign_in" href="/sign_in">Sign in</a>
-                            <a id="sign_up" href="/sign_up">Sign up
-                                <img id="flèche" src="public/img/flèche.png" alt="">
-                            </a>
-                        </div>
-                    </div>
+
+<body>
+    <header class="index-head">
+        <div class="header-logo">
+            <div class="logo-index">
+                <a href=""><img src="/public/img/logo_transparent.png" alt="logo brickodepot"></a>
+            </div>
+            <div class="nav">
+                <a href="">Forum</a>
+                <a href="">Catégories <img id="flechebas" src="public/img/flechebas.png" alt=""></a>
+                <a href="">About us</a>
+                <a href="">Contacts</a>
+            </div>
+            <div class="information">
+                <div class="connexion">
+                    <a id="sign_in" href="/sign_in">Sign in</a>
+                    <a id="sign_up" href="/sign_up">Sign up
+                        <img id="flèche" src="public/img/flèche.png" alt="">
+                    </a>
                 </div>
+            </div>
+        </div>
+        </div>
+    </header>
+    <div class="center-container">
+        <div class="change-container">
+            <h2>Change User Information</h2>
+            <form>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
                 </div>
-            </header>
-    <div class="change-container">
-        <h2>Change User Information</h2>
-        <form>
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <div class="form-group">
-                <label for="profile-img">Profile Image</label>
-                <input type="file" id="profile-img" name="profile-img" accept="image/*">
-            </div>
-            <div class="form-group">
-                <button type="submit" id="change-btn">Save Changes</button>
-            </div>
-        </form>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="profile-img">Profile Image</label>
+                    <input type="file" id="profile-img" name="profile-img" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <button type="submit" id="change-btn">Save Changes</button>
+                </div>
+            </form>
+        </div>
     </div>
     <footer>
         <div class="real-footer">
@@ -64,10 +67,10 @@
                 <img src="public/img/twitter.png" alt="">
                 <img src="public/img/youtube.png" alt="">
             </div>
-    
+
         </div>
     </footer>
     <script src="public/js/index.js"></script>
-    </body>
-    
-    </html>
+</body>
+
+</html>
