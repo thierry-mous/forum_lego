@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const topicId = urlParams.get('id');
 
-    fetch(`http://localhost:3000/api/topics/getPostsByTopicId/${topicId}`, {
+    fetch(`http://localhost:3000/api/topics/getTopics/${topicId}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -56,7 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // Ajout de la section de formulaire de commentaire en bas de tous les posts
         const commentsFormSection = document.createElement('div');
         commentsFormSection.classList.add('comments-form-section');
         commentsFormSection.innerHTML = `
