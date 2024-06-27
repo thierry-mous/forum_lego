@@ -59,9 +59,7 @@ const authenticateUser = async (req, res) => {
             return res.status(401).send('Invalid password');
         }
 
-        req.session.userId = user.id;
-        req.session.username = user.username;
-
+    
         return res.status(200).send('Login successful');
     } catch (err) {
         console.error(err);

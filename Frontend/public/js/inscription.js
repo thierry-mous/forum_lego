@@ -5,18 +5,20 @@ document.getElementById('inscription').addEventListener('submit', function (e) {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
+    clearErrorMessage();
+
     if (!isUsernameValid(username)) {
-        alert('Username must be alphanumeric and between 3 to 20 characters long.');
+        showErrorMessage('Username must be alphanumeric and between 3 to 20 characters long.');
         return;
     }
 
     if (!isEmailValid(email)) {
-        alert('Invalid email format.');
+        showErrorMessage('Invalid email format.');
         return;
     }
 
     if (!isPasswordValid(password)) {
-        alert('Password must be at least 8 characters long, contain at least one uppercase letter, and one special character.');
+        showErrorMessage('Password must be at least 8 characters long, contain at least one uppercase letter, and one special character.');
         return;
     }
 
@@ -29,7 +31,7 @@ document.getElementById('inscription').addEventListener('submit', function (e) {
     })
     .then(response => response.text())
     .then(data => {
-        alert(data);
+        window.location.href = 'http://localhost:8080/login';
     })
     .catch(error => {
         console.error('Error:', error);
@@ -53,4 +55,14 @@ function isPasswordValid(password) {
     const regexUpper = /[A-Z]/;
     const regexSpecial = /[!@#$%^&*(),.?":{}|<>]/;
     return regexUpper.test(password) && regexSpecial.test(password);
+}
+
+function showErrorMessage(message) {
+    const errorMessageElement = document.getElementById('error-message');
+    errorMessageElement.textContent = message;
+}
+
+function clearErrorMessage() {
+    const errorMessageElement = document.getElementById('error-message');
+    errorMessageElement.textContent = '';
 }
