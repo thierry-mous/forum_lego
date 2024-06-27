@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
             topicElement.innerHTML = `
                 <div class="post">
                     <div class="user-info">
-                        <p class="username">${topic.author}</p>
+                        <p class="username">${topic.username}</p>
                         <p class="user-role">Member</p>
                     </div>
                     <div class="post-content">
@@ -44,13 +44,13 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.json())
             .then(posts => {
                 const postsContainer = document.getElementById('postsContainer');
-                postsContainer.innerHTML = ''; // Effacer les posts précédents
+                postsContainer.innerHTML = ''; 
                 posts.forEach(post => {
                     const postElement = document.createElement('div');
                     postElement.classList.add('post');
                     postElement.innerHTML = `
                         <div class="user-info">
-                            <p class="username">${post.author}</p>
+                            <p class="username">${post.username}</p>
                             <p class="user-role">Member</p>
                         </div>
                         <div class="post-content">

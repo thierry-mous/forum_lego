@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
             postElement.classList.add('post');
             postElement.innerHTML = `
                 <div class="user-info">
-                    <p class="username">${post.author}</p>
+                    <p class="username">${post.username}</p>
                     <p class="user-role">${post.admin_status ? post.admin_status : 'User'}</p>
                 </div>
                 <div class="post-content">

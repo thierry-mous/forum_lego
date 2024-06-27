@@ -4,7 +4,11 @@ const db = require('../utility/config');
 
 const getTopics = () => {
     return new Promise((resolve, reject) => {
-        const sql = 'SELECT * FROM topics';
+        const sql = `
+            SELECT topics.*, users.username 
+            FROM topics 
+            JOIN users ON topics.users_id = users.id
+        `;
         db.query(sql, (err, results) => {
             if (err) {
                 reject(err);
@@ -19,7 +23,7 @@ const getPostsByTopicId = (topicId) => {
     return new Promise((resolve, reject) => {
         const sql = `
             SELECT post.*, users.username, users.email, users.photo, users.biography, 
-                   admin.admin_status
+                   COALESCE(admin.admin_status, 'User') AS user_role
             FROM post
             JOIN users ON post.users_id = users.id
             LEFT JOIN admin ON users.admin_id = admin.id
