@@ -38,6 +38,17 @@ app.get('/legal', (req, res) => {
     res.sendFile(join(__dirname, 'templates', 'legalmentions.html'));
 });
 
+app.get('/createpost', (req, res) => {
+    res.sendFile(join(__dirname, 'templates', 'create_topics.html'));
+});
+
+app.get('/post', (req, res) => {
+    res.sendFile(join(__dirname, 'templates', 'post.html'));
+});
+
+app.get('/user', (req, res) => {
+    res.sendFile(join(__dirname, 'templates', 'info_change.html'));
+});
 
 
 const PORT = process.env.PORT || 8080;
