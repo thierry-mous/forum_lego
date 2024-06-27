@@ -22,17 +22,16 @@
             </div>
             <div class="nav">
                 <a href="">Forum</a>
-                <a href="">Catégories <img id="flechebas" src="public/img/flechebas.png" alt=""></a>
+                <div class="dropdown">
+                    <a href="#" id="categoriesLink">Catégories <img id="flechebas" src="public/img/flechebas.png" alt=""></a>
+                    <div class="dropdown-content">
+                        <a href="topics?id=1">Lego Spiderman</a>
+                        <a href="topics?id=2">Lego City</a>
+                        <a href="topics?id=3">Lego Technic</a>
+                    </div>
+                </div>
                 <a href="/about">About us</a>
                 <a href="">Contacts</a>
-            </div>
-            <div class="information">
-                <div class="connexion">
-                    <a id="sign_in" href="/login">Sign in</a>
-                    <a id="sign_up" href="/register">Sign up
-                        <img id="flèche" src="public/img/flèche.png" alt="">
-                    </a>
-                </div>
             </div>
         </div>
         </div>
@@ -76,6 +75,8 @@
         </div>
     </footer>
     <script src="public/js/index.js"></script>
+    <script src="/public/js/header.js"></script>
+
 </body>
 
 </html>

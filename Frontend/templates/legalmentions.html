@@ -21,7 +21,14 @@
                 </div>
                 <div class="nav">
                     <a href="">Forum</a>
-                    <a href="">Catégories <img id="flechebas" src="public/img/flechebas.png" alt=""></a>
+                    <div class="dropdown">
+                        <a href="#" id="categoriesLink">Catégories <img id="flechebas" src="public/img/flechebas.png" alt=""></a>
+                        <div class="dropdown-content">
+                            <a href="topics?id=1">Lego Spiderman</a>
+                            <a href="topics?id=2">Lego City</a>
+                            <a href="topics?id=3">Lego Technic</a>
+                        </div>
+                    </div>
                     <a href="/about">About us</a>
                     <a href="">Contacts</a>
                 </div>
@@ -76,6 +83,8 @@ For any legal inquiries, please contact our legal team at legal@brickodepot.com.
         <div class="right-info">
             <a href="/profile">Profile</a>
 </footer>
+<script src="/public/js/header.js"></script>
+
 </body>
 
 </html>

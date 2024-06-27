@@ -44,7 +44,6 @@ CREATE TABLE topics(
     title VARCHAR(255),
     body text,
  	publish_date date,
-   	author VARCHAR(50),
     state VARCHAR (50),
    	users_id INT,
     tags_id INT,
@@ -106,4 +105,4 @@ CREATE TABLE tag (
 
 INSERT INTO tag (label)
 VALUES 
-('Star Wars'), ('Technic'), ('Collections'), ('Customization'), ('Stop Motion'), ('Education'), ('Rare Pieces'), ('Competitions'), ('Movies'), ('Deals');
+('Star Wars'), ('Technic'), ('Spider-Man'), ('City'), ('Stop Motion'), ('Education'), ('Rare Pieces'), ('Competitions'), ('Movies'), ('Deals');

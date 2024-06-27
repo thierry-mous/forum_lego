@@ -24,13 +24,17 @@ const getTopics = () => {
 const getPostsByTopicId = (topicId) => {
     return new Promise((resolve, reject) => {
         const sql = `
-            SELECT post.*, users.username, users.email, users.photo, users.biography, 
-                   COALESCE(admin.admin_status, 'User') AS user_role
-            FROM post
-            JOIN users ON post.users_id = users.id
-            LEFT JOIN admin ON users.admin_id = admin.id
-            WHERE post.topics_id = ?
-        `;
+    SELECT post.*, users.username, users.email, users.photo, users.biography, 
+           COALESCE(admin.admin_status, 'User') AS user_role,
+           topics.title AS title,
+           tag.label AS tag
+    FROM post
+    JOIN users ON post.users_id = users.id
+    LEFT JOIN admin ON users.admin_id = admin.id
+    JOIN topics ON post.topics_id = topics.id
+    JOIN tag ON topics.tags_id = tag.id
+    WHERE post.topics_id = ?
+`;
         db.query(sql, [topicId], (err, results) => {
             if (err) {
                 reject(err);
@@ -44,8 +48,11 @@ const getPostsByTopicId = (topicId) => {
 const getTopicsByTags = (tags) => {
     return new Promise((resolve, reject) => {
         const sql = `
-            SELECT * FROM topics
-            WHERE tags_id = ?
+            SELECT topics.*, users.username, COALESCE(admin.admin_status, 'User') AS admin_status
+            FROM topics
+            JOIN users ON topics.users_id = users.id
+            LEFT JOIN admin ON users.admin_id = admin.id
+            WHERE topics.tags_id = ?
         `;
         db.query(sql, [tags], (err, results) => {
             if (err) {
@@ -55,7 +62,7 @@ const getTopicsByTags = (tags) => {
             }
         });
     });
-}
+};
 
 module.exports = {
     getTopicsByTags,
