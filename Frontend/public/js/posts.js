@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         <div class="post-content">
                             <p class="post-text">${post.body}</p>
                         </div>
+                        <div class="separator"></div>
                     </div>
                     </div>
                 `;

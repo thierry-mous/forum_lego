@@ -80,6 +80,7 @@
         margin-bottom: 20px;
         width: 100%;      
         justify-content: space-between; 
+        margin: 0;
     }
 
     .other-posts .post-content{
@@ -92,3 +93,16 @@
         width: 1200px; 
         overflow: auto;
     }
+
+   .other-posts .post-text{
+    margin: 0;
+   }
+
+   .post{   padding: 20px;
+    text-align: center;}
+
+   .separator{
+    width: 80%; 
+    margin: 20px auto; 
+    border-top: 1px solid black; 
+   }
