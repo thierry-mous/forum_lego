@@ -42,8 +42,8 @@ app.get('/createpost', (req, res) => {
     res.sendFile(join(__dirname, 'templates', 'create_topics.html'));
 });
 
-app.get('/post', (req, res) => {
-    res.sendFile(join(__dirname, 'templates', 'post.html'));
+app.get('/posts', (req, res) => {
+    res.sendFile(join(__dirname, 'templates', 'posts.html'));
 });
 
 app.get('/user', (req, res) => {

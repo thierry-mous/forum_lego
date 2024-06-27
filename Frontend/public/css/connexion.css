@@ -147,3 +147,19 @@ input[type="submit"]:hover {
     flex-direction: column;
     align-items: center;
 }
+
+.help {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.help a {
+    color: #959595;
+    transition: color 0.3s;
+}
+
+.help a:hover {
+  color:  rgb(51 51 51);
+}
