@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="post">
                     <div class="user-info">
                         <p class="username">${topic.username}</p>
-                        <p class="user-role">Member</p>
+                                <p class="user-role">${topic.admin_status}</p>
                     </div>
                     <div class="post-content">
                         <p class="post-date">Posted on: ${new Date(topic.publish_date).toLocaleDateString()}</p>
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     postElement.innerHTML = `
                         <div class="user-info">
                             <p class="username">${post.username}</p>
-                            <p class="user-role">Member</p>
+                            <p class="user-role">${post.admin_status ? post.admin_status : 'User'}</p>
                         </div>
                         <div class="post-content">
                             <p class="post-date">Posted on: ${new Date(post.publish_date).toLocaleDateString()}</p>

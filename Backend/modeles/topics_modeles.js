@@ -5,10 +5,12 @@ const db = require('../utility/config');
 const getTopics = () => {
     return new Promise((resolve, reject) => {
         const sql = `
-            SELECT topics.*, users.username 
-            FROM topics 
-            JOIN users ON topics.users_id = users.id
-        `;
+        SELECT topics.*, users.username, 
+               COALESCE(admin.admin_status, 'User') AS admin_status
+        FROM topics 
+        JOIN users ON topics.users_id = users.id
+        LEFT JOIN admin ON users.admin_id = admin.id
+    `;
         db.query(sql, (err, results) => {
             if (err) {
                 reject(err);
