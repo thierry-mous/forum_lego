@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (event.target.classList.contains('post-link')) {
             event.preventDefault();
             const topicId = event.target.dataset.topicId;
-            fetch(`http://localhost:3000/api/topics/getPostsByTopicId/${topicId}`, {
+            fetch(`http://localhost:3000/api/topics/getTopics/${topicId}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
