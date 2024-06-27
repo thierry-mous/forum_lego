@@ -45,9 +45,9 @@ const getPostsByTopicId = (topicId) => {
     });
 };
 
-const getTopicsByTags = (tags) => {
+const getTopicsByTags = (tagsId, sortBy = 'recent') => {
     return new Promise((resolve, reject) => {
-        const sql = `
+        let sql = `
             SELECT topics.*, users.username, COALESCE(admin.admin_status, 'User') AS admin_status, tag.label AS tag_label
             FROM topics
             JOIN users ON topics.users_id = users.id
@@ -55,7 +55,14 @@ const getTopicsByTags = (tags) => {
             LEFT JOIN tag ON topics.tags_id = tag.id
             WHERE topics.tags_id = ?
         `;
-        db.query(sql, [tags], (err, results) => {
+
+        if (sortBy === 'recent') {
+            sql += ' ORDER BY topics.publish_date DESC';
+        } else if (sortBy === 'older') {
+            sql += ' ORDER BY topics.publish_date ASC';
+        }
+
+        db.query(sql, [tagsId], (err, results) => {
             if (err) {
                 reject(err);
             } else {
@@ -64,6 +71,8 @@ const getTopicsByTags = (tags) => {
         });
     });
 };
+
+
 
 module.exports = {
     getTopicsByTags,

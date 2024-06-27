@@ -1,15 +1,41 @@
 const express = require('express');
 const {join, dirname} = require('path');
-
+const mysql = require('mysql');
 const session = require('express-session');
-const { fileURLToPath } = require('url');
 
+
+const db = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'forum'
+});
+
+db.connect((err) => {
+    if (err) {
+       console.log(err);
+    }else{
+        console.log('Connected to database');
+    }
+});
 
 const app = express();
 
+function generateRandomString(length) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+}
+
+const secret = generateRandomString(32);
+console.log(`Generated secret: ${secret}`);
 
 app.use(session({
-    secret : 'secret',
+    secret : secret,
     resave : false,
     saveUninitialized : false,
     cookie : {
@@ -18,6 +44,7 @@ app.use(session({
     }
 }));
 
+app.use(express.urlencoded({ extended: true }));
 
 
 

@@ -1,5 +1,4 @@
 const userModel = require('../modeles/topics_modeles.js');
-const { get } = require('../routes/inscription_route.js');
 
 
 const getTopics = async (req, res) => {
@@ -27,20 +26,23 @@ const getPostsByTopicId = async (req, res) => {
 
 const getTopicsByTags = async (req, res) => {
     const { tags } = req.params;
+    const { sort } = req.query; // Optionnel : Récupérer le paramètre de tri depuis la requête
 
     try {
-        const topics = await userModel.getTopicsByTags(tags);
-        res.status(200).send(topics);
+        // Appel de la fonction du modèle avec tags et sort
+        const topics = await userModel.getTopicsByTags(tags, sort);
+
+        // Envoyer la réponse avec les topics récupérés
+        res.status(200).json(topics);
     } catch (err) {
-        console.log(err);
+        console.error('Error fetching topics by tags:', err);
         res.status(500).send('Server error');
     }
-}
-
-
+};
 
 module.exports = {
     getTopics,
     getPostsByTopicId,
-    getTopicsByTags
+    getTopicsByTags,
+    
 };

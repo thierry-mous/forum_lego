@@ -1,9 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const topicId = urlParams.get('id');
+    const triSelect = document.getElementById('tri');
+    const topicsContainer = document.getElementById('topicsContainer');
+    const categoryDiv = document.getElementsByClassName('categories')[0];
 
-    if (topicId) {
-        fetch(`http://localhost:3000/api/topics/getTopicsByTags/${topicId}`, {
+    triSelect.addEventListener('change', function() {
+        const sortValue = triSelect.value;
+        fetch(`http://localhost:3000/api/topics/getTopicsByTags/${topicId}?sort=${sortValue}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -11,8 +15,9 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => response.json())
         .then(data => {
-            const container = document.getElementById('topicsContainer');
-            
+            topicsContainer.innerHTML = '';
+            categoryDiv.innerHTML = '';
+
             data.forEach(topic => {
                 const topicElement = document.createElement('a');
                 topicElement.href = `posts?id=${topic.id}`;
@@ -29,12 +34,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                     </div>
                 `;
-                container.appendChild(topicElement);
+                topicsContainer.appendChild(topicElement);
             });
 
             if (data.length > 0) {
                 const firstTopic = data[0];
-                const categoryDiv = document.getElementsByClassName('categories')[0];
                 if (categoryDiv) {
                     const tagParagraph = document.createElement('p');
                     tagParagraph.classList.add('cat_text');
@@ -46,5 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => {
             console.error('Error:', error);
         });
-    }
+    });
+
+    triSelect.dispatchEvent(new Event('change'));
 });
