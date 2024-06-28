@@ -72,10 +72,33 @@ const getTopicsByTags = (tagsId, sortBy = 'recent') => {
     });
 };
 
+const createTopic = async (topic) => {
+    const sql = `
+        INSERT INTO topics (title, body, publish_date, state, users_id, tags_id)
+        VALUES (?, ?, ?, ?, ?, ?)
+    `;
+    const params = [
+        topic.title,
+        topic.body,
+        topic.publish_date,
+        topic.state,
+        topic.users_id,
+        topic.tags_id
+    ];
+    return new Promise((resolve, reject) => {
+        db.query(sql, params, (err, result) => {
+            if (err) {
+                return reject(err);
+            }
+            resolve(result);
+        });
+    });
+};
 
 
 module.exports = {
     getTopicsByTags,
     getTopics,
-    getPostsByTopicId
+    getPostsByTopicId,
+    createTopic
 };

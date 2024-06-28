@@ -3,7 +3,7 @@ const db = require('../utility/config');
 const Post = {
     getAllPosts: (callback) => {
         const sql = `
-            SELECT post.id, post.body, post.publish_date, post.author, 
+            SELECT post.id, post.body, post.publish_date, 
                 users.username AS user_name,
                 COALESCE(admin.admin_status, 'User') AS user_role,
                 topics.title AS topic_title 

@@ -40,9 +40,38 @@ const getTopicsByTags = async (req, res) => {
     }
 };
 
+const createTopic = async (req, res) => {
+    const { title, body, state, users_id, tags_id } = req.body;
+
+    if (!title || !body || !state || !users_id || !tags_id) {
+        return res.status(400).send('All fields are required');
+    }
+
+    try {
+        const newTopic = {
+            title,
+            body,
+            publish_date: new Date(),
+            state,
+            users_id,
+            tags_id
+        };
+
+        const result = await userModel.createTopic(newTopic);
+        return res.status(200).json({
+            message: 'Topic created successfully',
+            topic: result
+        });
+    } catch (err) {
+        console.error(err);
+        return res.status(500).send('Server error');
+    }
+};
+
 module.exports = {
     getTopics,
     getPostsByTopicId,
     getTopicsByTags,
+    createTopic
     
 };

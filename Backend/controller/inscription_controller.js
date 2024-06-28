@@ -1,5 +1,8 @@
 const crypto = require('crypto');
+const jwt = require('jsonwebtoken');
 const userModel = require('../modeles/inscription_modeles.js');
+
+const JWT_SECRET = 'your_jwt_secret_key';
 
 const registerUser = async (req, res) => {
     const { username, email, password } = req.body;
@@ -59,8 +62,10 @@ const authenticateUser = async (req, res) => {
             return res.status(401).send('Invalid password');
         }
 
-    
-        return res.status(200).send('Login successful');
+        const token = jwt.sign({ id: user.id, username: user.username }, JWT_SECRET, { expiresIn: '1h' });
+        res.cookie('token', token, { httpOnly: true });
+        
+        return res.status(200).json({ message: 'Login successful', token });
     } catch (err) {
         console.error(err);
         return res.status(500).send('Server error');

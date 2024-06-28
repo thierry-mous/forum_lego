@@ -4,49 +4,12 @@ const mysql = require('mysql');
 const session = require('express-session');
 
 
-const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'forum'
-});
-
-db.connect((err) => {
-    if (err) {
-       console.log(err);
-    }else{
-        console.log('Connected to database');
-    }
-});
 
 const app = express();
 
-function generateRandomString(length) {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let result = '';
-    const charactersLength = characters.length;
-    for (let i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-}
-
-const secret = generateRandomString(32);
-console.log(`Generated secret: ${secret}`);
-
-app.use(session({
-    secret : secret,
-    resave : false,
-    saveUninitialized : false,
-    cookie : {
-        secure : false,
-        maxAge : 1000 * 60 * 60 * 24
-    }
-}));
-
-app.use(express.urlencoded({ extended: true }));
 
 
+//Gérer les routes
 
 
 app.use('/public/', express.static(join(__dirname, 'public')));
