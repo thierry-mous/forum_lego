@@ -126,8 +126,6 @@ INSERT INTO topics (title, body, publish_date, state, users_id, tags_id) VALUES
 
 
 
-
-
 CREATE TABLE post(
     id INT PRIMARY KEY AUTO_INCREMENT,
     body text,

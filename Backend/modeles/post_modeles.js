@@ -43,4 +43,28 @@ const createPost = async (post) => {
     });
 };
 
-module.exports = { getAllPosts, createPost };
+const likePost = async (id, userId) => {
+    const sql = `
+        UPDATE post 
+        SET likes = likes + 1
+        WHERE id = ? AND users_id = ?
+    `;
+    const params = [id, userId];
+    console.log(params);
+
+    return new Promise((resolve, reject) => {
+        db.query(sql, params, (err, result) => {
+            if (err) {
+                return reject(err);
+            }
+            resolve(result);
+        });
+    });
+};
+
+
+
+module.exports = { getAllPosts,
+    createPost,
+    likePost
+     };

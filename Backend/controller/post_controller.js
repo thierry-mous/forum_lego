@@ -38,7 +38,26 @@ const createPost = async (req, res) => {
     }
 };
 
+const likePost = async (req, res) => {
+    const { id, userId } = req.body;
+    console.log(id, userId);
+
+    try {
+        const result = await Post.likePost(id, userId);
+
+        if (result.affectedRows === 0) {
+            return res.status(404).send('Post not found');
+        }
+
+        return res.status(200).send('Post liked');
+    } catch (err) {
+        console.error(err);
+        return res.status(500).send('Server error');
+    }
+}
+
 module.exports = {
     getAllPosts,
-    createPost
+    createPost,
+    likePost
 };
