@@ -1,10 +1,9 @@
 const db = require('../utility/config');
 
-const Post = {
-    getAllPosts: (callback) => {
+const getAllPosts = (callback) => {
         const sql = `
             SELECT post.id, post.body, post.publish_date, 
-                users.username AS user_name,
+                users.username AS username,
                 COALESCE(admin.admin_status, 'User') AS user_role,
                 topics.title AS topic_title 
             FROM post 
@@ -20,7 +19,7 @@ const Post = {
             callback(null, results);
         });
     }
-};
+
 
 const createPost = async (post) => {
     const sql = `
@@ -44,4 +43,4 @@ const createPost = async (post) => {
     });
 };
 
-module.exports = { Post, createPost };
+module.exports = { getAllPosts, createPost };

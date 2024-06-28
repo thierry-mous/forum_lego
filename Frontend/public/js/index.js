@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 const postElement = document.createElement('div');
                 postElement.classList.add('box');
                 postElement.innerHTML = `
-                    <h3 class="box_title">${post.author}</h3>
+                    <h3 class="box_title">${post.username}</h3>
                     <p class="para_box">${post.user_role}</p>
                     <small>${new Date(post.publish_date).toLocaleDateString()}</small>
                     <p class="topic_box">${post.topic_title}</p>
@@ -29,5 +29,3 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error('Error fetching posts:', error);
         });
 });
-
-document.addEventListener()

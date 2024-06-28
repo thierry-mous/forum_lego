@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const commentData = {
             body: commentBody,
-            topics_id: topicId, 
+            topics_id: topicId,
             users_id: 1, // Remplacez par l'ID de l'utilisateur connecté (à récupérer via token)
         };
 
@@ -28,29 +28,33 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(response => response.json())
         .then(result => {
-            const postElement = document.createElement('div');
-                    postElement.classList.add('post');
-                    postElement.innerHTML = `
-                    <div class="center-container">
+            // Création de l'élément du commentaire nouvellement ajouté
+            const commentElement = document.createElement('div');
+            commentElement.classList.add('post');
+            commentElement.innerHTML = `
+                <div class="center-container">
                     <div class="comment">
                         <div class="user-info">
-                        <div class="infopost">
-                            <p class="username">${post.username}</p>
-                            <p class="user-role">${post.admin_status ? post.admin_status : 'User'}</p>
-                        </div>
-                            <p class="post-date">Posted on: ${new Date(post.publish_date).toLocaleDateString()}</p>
+                            <div class="infopost">
+                                <p class="username">User</p> <!-- Remplacez par le nom de l'utilisateur connecté -->
+                                <p class="user-role">User</p>
+                            </div>
+                            <p class="post-date">Posted on: ${new Date().toLocaleDateString()}</p>
                         </div>
                         <div class="post-content">
-                            <p class="post-text">${post.body}</p>
+                            <p class="post-text">${commentBody}</p>
                         </div>
                         <div class="separator"></div>
                     </div>
-                    </div>
-                `;
+                </div>
+            `;
             postsContainer.appendChild(commentElement);
 
-            // Effacer le champ de texte après l'ajout du commentaire
+            // Réinitialisation du champ de commentaire après l'ajout
             commentTextarea.value = '';
+
+            // Rechargement de la page pour rafraîchir les commentaires
+            location.reload();
         })
         .catch(error => {
             console.error('Error:', error);
