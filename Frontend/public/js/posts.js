@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="post1">
                     <div class="user-info">
                     <div class="infopost">
-                        <p class="username">${firstPost.author}</p>
+                        <p class="username">${firstPost.username}</p>
                          <p class="user-role">${firstPost.admin_status ? firstPost.admin_status : 'User'}</p>
                     </div>
                         <p class="post-date">Posted on: ${new Date(firstPost.publish_date).toLocaleDateString()}</p>

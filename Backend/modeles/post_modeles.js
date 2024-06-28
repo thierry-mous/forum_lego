@@ -22,4 +22,26 @@ const Post = {
     }
 };
 
-module.exports = Post;
+const createPost = async (post) => {
+    const sql = `
+        INSERT INTO post (body, publish_date, topics_id, users_id)
+        VALUES (?, ?, ?, ?)
+    `;
+    const params = [
+        post.body,
+        post.publish_date,
+        post.topics_id,
+        post.users_id
+    ];
+
+    return new Promise((resolve, reject) => {
+        db.query(sql, params, (err, result) => {
+            if (err) {
+                return reject(err);
+            }
+            resolve(result);
+        });
+    });
+};
+
+module.exports = { Post, createPost };
