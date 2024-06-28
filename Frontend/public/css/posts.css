@@ -1,5 +1,8 @@
 .allbody{
-    background-color:#d9d9d9 
+    background-color:#d9d9d9 ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .center-container {
@@ -21,6 +24,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     height: 70%;
     margin-bottom: 20px;
+    margin-top: 10px;
   }
 
   .other-posts{
@@ -123,12 +127,11 @@
 
     .post-comment{
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
     width: 75%;
     padding: 20px;
     background-color: white;
-    border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     height: 40vh;
     margin-bottom: 20px;
@@ -158,11 +161,17 @@
     }
 
     .comment-textarea{
-        border-radius: 10px 0 10px 0;
         width: 832px;
         height: 93px;
         margin: 0;
+        max-width: 832px;
+        max-height: 93px;
 
+    }
+
+    #btncom:hover {
+        background-color: rgb(51 51 51);
+        border-color:rgb(51 51 51);
     }
     
     .comment-form h2{
