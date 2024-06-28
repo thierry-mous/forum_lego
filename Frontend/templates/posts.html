@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="/public/css/posts.css">
     <link rel="stylesheet" href="/public/css/footer.css">
 </head>
+
 <body>
     <header class="index-head">
         <div class="header-logo">
@@ -17,7 +19,8 @@
             <div class="nav">
                 <a href="">Forum</a>
                 <div class="dropdown">
-                    <a href="#" id="categoriesLink">Catégories <img id="flechebas" src="public/img/flechebas.png" alt=""></a>
+                    <a href="#" id="categoriesLink">Catégories <img id="flechebas" src="public/img/flechebas.png"
+                            alt=""></a>
                     <div class="dropdown-content">
                         <a href="topics?id=3">Lego Spiderman</a>
                         <a href="topics?id=4">Lego City</a>
@@ -40,9 +43,18 @@
         </div>
         </div>
     </header>
-       <h1>Posts</h1>
-    </header>
-    <div id="postsContainer" class="container">
+    <div class="allbody">
+        </header>
+        <div id="postsContainer" class="container">
+        </div>
+        <div class="post-comment" id="post-comment">
+
+            <div class="comment-form">
+                <h2>Comments</h2>
+                <textarea class="comment-textarea" placeholder="Write a comment..."></textarea>
+                <button class="comment-button">Comment</button>
+            </div>
+        </div>
     </div>
     <footer>
         <div class="real-footer">
@@ -52,11 +64,11 @@
                 <img src="public/img/twitter.png" alt="">
                 <img src="public/img/youtube.png" alt="">
             </div>
-    
         </div>
     </footer>
-   <script src="/public/js/posts.js"></script>
-   <script src="/public/js/header.js"></script>
+    <script src="/public/js/posts.js"></script>
+    <script src="/public/js/header.js"></script>
 
-    </body>
-    </html>
+</body>
+
+</html>
