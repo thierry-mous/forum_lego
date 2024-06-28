@@ -166,7 +166,7 @@
         margin: 0;
         max-width: 832px;
         max-height: 93px;
-
+        color: #999 ;
     }
 
     #btncom:hover {
@@ -190,6 +190,5 @@
     }
 
     
-.post1 {
-    width: 95%;
-}
+   
+
