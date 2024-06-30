@@ -12,17 +12,6 @@ const getTopics = async (req, res) => {
 };
 
 
-const getPostsByTopicId = async (req, res) => {
-    const { topicId } = req.params;
-
-    try {
-        const posts = await userModel.getPostsByTopicId(topicId);
-        res.status(200).send(posts);
-    } catch (err) {
-        console.log(err);
-        res.status(500).send('Server error');
-    }
-}
 
 const getTopicsByTags = async (req, res) => {
     const { tags } = req.params;
@@ -68,7 +57,6 @@ const createTopic = async (req, res) => {
 
 module.exports = {
     getTopics,
-    getPostsByTopicId,
     getTopicsByTags,
     createTopic
     

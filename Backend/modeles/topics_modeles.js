@@ -21,30 +21,6 @@ const getTopics = () => {
     });
 };
 
-const getPostsByTopicId = (topicId) => {
-    return new Promise((resolve, reject) => {
-        const sql = `
-    SELECT post.*, users.username, users.email, users.photo, users.biography, 
-           COALESCE(admin.admin_status, 'User') AS user_role,
-           topics.title AS title,
-           tag.label AS tag
-    FROM post
-    JOIN users ON post.users_id = users.id
-    LEFT JOIN admin ON users.admin_id = admin.id
-    JOIN topics ON post.topics_id = topics.id
-    JOIN tag ON topics.tags_id = tag.id
-    WHERE post.topics_id = ?
-`;
-        db.query(sql, [topicId], (err, results) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(results);
-            }
-        });
-    });
-};
-
 const getTopicsByTags = (tagsId, sortBy = 'recent') => {
     return new Promise((resolve, reject) => {
         let sql = `
@@ -99,6 +75,5 @@ const createTopic = async (topic) => {
 module.exports = {
     getTopicsByTags,
     getTopics,
-    getPostsByTopicId,
     createTopic
 };

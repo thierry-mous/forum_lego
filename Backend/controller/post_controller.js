@@ -38,26 +38,53 @@ const createPost = async (req, res) => {
     }
 };
 
-const likePost = async (req, res) => {
-    const { id, userId } = req.body;
-    console.log(id, userId);
+const getPostsByTopicId = async (req, res) => {
+    const { topicId } = req.params;
 
     try {
-        const result = await Post.likePost(id, userId);
+        const posts = await Post.getPostsByTopicId(topicId);
+        res.status(200).send(posts);
+    } catch (err) {
+        console.log(err);
+        res.status(500).send('Server error');
+    }
+}
 
-        if (result.affectedRows === 0) {
+const deletePost = async (req, res) => {
+    const { id } = req.params;
+    const userId = req.userId;
+
+    console.log('User ID:', userId);
+    console.log('Post ID:', id);
+
+    try {
+        const post = await Post.getPostsById(id);
+
+        if (!post) {
             return res.status(404).send('Post not found');
         }
 
-        return res.status(200).send('Post liked');
+        // Récupérer users_id de la table topics
+        const topicUserId = post.topic_users_id;
+
+        console.log('Topic user ID:', topicUserId);
+
+        if (topicUserId !== userId) {
+            return res.status(403).send('You are not authorized to delete this post');
+        }
+
+        await Post.deletePost(id);
+        res.status(200).send('Post deleted successfully');
     } catch (err) {
         console.error(err);
-        return res.status(500).send('Server error');
+        res.status(500).send('Server error');
     }
-}
+};
+
 
 module.exports = {
     getAllPosts,
     createPost,
-    likePost
+    deletePost,
+    getPostsByTopicId
 };

@@ -4,7 +4,6 @@ const {getTopics, getPostsByTopicId, getTopicsByTags, createTopic } = require('.
 const router = express.Router();
 
 router.get('/getTopics', getTopics);
-router.get('/getTopics/:topicId', getPostsByTopicId);
 router.get('/getTopicsByTags/:tags', getTopicsByTags);
 
 router.post('/createTopic', createTopic);

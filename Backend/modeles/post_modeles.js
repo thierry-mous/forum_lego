@@ -43,28 +43,72 @@ const createPost = async (post) => {
     });
 };
 
-const likePost = async (id, userId) => {
-    const sql = `
-        UPDATE post 
-        SET likes = likes + 1
-        WHERE id = ? AND users_id = ?
-    `;
-    const params = [id, userId];
-    console.log(params);
 
+const getPostsByTopicId = (topicId) => {
     return new Promise((resolve, reject) => {
-        db.query(sql, params, (err, result) => {
+        const sql = `
+    SELECT post.*, users.username, users.email, users.photo, users.biography, 
+       COALESCE(admin.admin_status, 'User') AS user_role,
+       topics.title AS title,
+       tag.label AS tag,
+       topics.users_id AS topic_user_id
+FROM post
+JOIN users ON post.users_id = users.id
+LEFT JOIN admin ON users.admin_id = admin.id
+JOIN topics ON post.topics_id = topics.id
+JOIN tag ON topics.tags_id = tag.id
+WHERE post.topics_id = ?;
+`;
+        db.query(sql, [topicId], (err, results) => {
             if (err) {
-                return reject(err);
+                reject(err);
+            } else {
+                resolve(results);
             }
-            resolve(result);
+        });
+    });
+};
+
+
+const getPostsById = (postId) => {
+    return new Promise((resolve, reject) => {
+        const sql = `
+            SELECT post.*, topics.users_id AS topic_users_id
+            FROM post
+            JOIN topics ON post.topics_id = topics.id
+            WHERE post.id = ?
+        `;
+        db.query(sql, [postId], (err, results) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(results[0]);
+            }
+        });
+    });
+};
+
+const deletePost = (postId) => {
+    return new Promise((resolve, reject) => {
+        const sql = `
+            DELETE FROM post WHERE id = ?
+        `;
+        db.query(sql, [postId], (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(result);
+            }
         });
     });
 };
 
 
 
+
 module.exports = { getAllPosts,
     createPost,
-    likePost
+    getPostsById,
+    getPostsByTopicId,
+    deletePost
      };
