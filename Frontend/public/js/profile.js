@@ -18,37 +18,47 @@ document.addEventListener("DOMContentLoaded", function () {
 
     saveButton.addEventListener('click', () => {
         const newBio = bioInput.value;
-        updateBiography(userId, newBio);
+        updateBiography(newBio);
     });
 
-    function fetchUserProfile(userId) {
-        axios.get(`http://localhost:3000/api/users/profile/${userId}`)
-            .then(response => {
-                if (!response.data) {
-                    throw new Error('No data received');
-                }
-                const data = response.data;
+    function fetchUserProfile() {
+        const token = getToken();
+        console.log('Token:', token);
 
-                if (typeof data === 'object') {
-                    document.getElementById('profile-photo').src = data.photo || '/public/img/pplego.png';
-                    document.getElementById('username').textContent = data.username;
-                    document.getElementById('email').textContent = data.email;
-                    document.getElementById('lastco').textContent = data.last_connection || 'N/A';
-                    document.getElementById('nbtopic').textContent = data.nb_topics || 'N/A';
-                    document.getElementById('role').textContent = data.role || 'User';
-                    document.getElementById('bio-text').textContent = data.biography || 'No biography set';
-                } else {
-                    console.log('Response message:', data);
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching user profile:', error);
-            });
+        axios.get(`http://localhost:3000/profile`, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            }
+        })
+        .then(response => {
+            if (!response.data) {
+                throw new Error('No data received');
+            }
+            const data = response.data;
+
+            if (typeof data === 'object') {
+                document.getElementById('profile-photo').src = data.photo || '/public/img/pplego.png';
+                document.getElementById('username').textContent = data.username;
+                document.getElementById('email').textContent = data.email;
+                document.getElementById('lastco').textContent = data.last_connection || 'N/A';
+                document.getElementById('nbtopic').textContent = data.nb_topics || 'N/A';
+                document.getElementById('role').textContent = data.role || 'User';
+                document.getElementById('bio-text').textContent = data.biography || 'No biography set';
+            } else {
+                console.log('Response message:', data);
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching user profile:', error);
+        });
     }
 
-    function updateBiography(userId, newBio) {
-        axios.put(`http://localhost:3000/api/users/profile/${userId}`, { biography: newBio }, {
+    function updateBiography(newBio) {
+        const token = getToken();
+
+        axios.put(`http://localhost:3000/profileBio`, { biography: newBio }, {
             headers: {
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             }
         })
@@ -64,5 +74,10 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => {
             console.error('Error updating biography:', error);
         });
+    }
+
+    // Fonction utilitaire pour récupérer le token JWT depuis le localStorage
+    function getToken() {
+        return localStorage.getItem('jwtToken');
     }
 });

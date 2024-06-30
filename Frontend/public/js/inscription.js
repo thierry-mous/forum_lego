@@ -2,8 +2,8 @@ document.getElementById('inscription').addEventListener('submit', function (e) {
     e.preventDefault();
 
     const username = document.getElementById('username').value;
-    const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
+    const email = document.getElementById('email').value;
 
     clearErrorMessage();
 
@@ -12,22 +12,24 @@ document.getElementById('inscription').addEventListener('submit', function (e) {
         return;
     }
 
-    if (!isEmailValid(email)) {
-        showErrorMessage('Invalid email format.');
-        return;
-    }
 
     if (!isPasswordValid(password)) {
         showErrorMessage('Password must be at least 8 characters long, contain at least one uppercase letter, and one special character.');
         return;
     }
 
-        fetch('http://localhost:3000/api/users/signup', {
+    if (!isEmailValid(email)) {
+        showErrorMessage('Email is not valid.');
+        return;
+    }
+
+
+        fetch('http://localhost:3000/api/auth/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ username, email, password })
+        body: JSON.stringify({ username, password, email })
     })
     .then(response => response.text())
     .then(data => {
@@ -43,11 +45,6 @@ function isUsernameValid(username) {
     return regex.test(username);
 }
 
-function isEmailValid(email) {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
-}
-
 function isPasswordValid(password) {
     if (password.length < 8) {
         return false;
@@ -55,6 +52,11 @@ function isPasswordValid(password) {
     const regexUpper = /[A-Z]/;
     const regexSpecial = /[!@#$%^&*(),.?":{}|<>]/;
     return regexUpper.test(password) && regexSpecial.test(password);
+}
+
+function isEmailValid(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
 }
 
 function showErrorMessage(message) {

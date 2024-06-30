@@ -26,13 +26,11 @@ const getPostsByTopicId = async (req, res) => {
 
 const getTopicsByTags = async (req, res) => {
     const { tags } = req.params;
-    const { sort } = req.query; // Optionnel : Récupérer le paramètre de tri depuis la requête
+    const { sort } = req.query;
 
     try {
-        // Appel de la fonction du modèle avec tags et sort
         const topics = await userModel.getTopicsByTags(tags, sort);
 
-        // Envoyer la réponse avec les topics récupérés
         res.status(200).json(topics);
     } catch (err) {
         console.error('Error fetching topics by tags:', err);

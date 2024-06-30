@@ -5,11 +5,23 @@ document.getElementById('create-btn').addEventListener('click', async function(e
     const body = document.getElementById('message').value;
     const tags_id = document.getElementById('category').value;
 
+    // Récupérer le token depuis le local storage
+    const token = localStorage.getItem('jwtToken');
+
+    if (!token) {
+        alert('User is not authenticated');
+        return;
+    }
+
+    const decodedToken = jwt_decode(token);
+    const userId = decodedToken.userId;
+    console.log('User ID:', userId);
+
     const topic = {
         title,
         body,
         state: 'published',
-        users_id: 1, // Remplacer par l'ID de l'utilisateur authentifié
+        users_id: userId,
         tags_id
     };
 
@@ -17,7 +29,8 @@ document.getElementById('create-btn').addEventListener('click', async function(e
         const response = await fetch('http://localhost:3000/api/topics/createTopic', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify(topic)
         });

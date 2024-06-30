@@ -6,28 +6,44 @@ document.addEventListener('DOMContentLoaded', function () {
     const commentTextarea = document.querySelector('.comment-textarea');
     const commentButton = document.querySelector('.comment-button');
 
-    commentButton.addEventListener('click', () => {
+    commentButton.addEventListener('click', async () => {
         const commentBody = commentTextarea.value.trim();
         if (commentBody === '') {
             alert('Please enter a comment.');
             return;
         }
 
+        // Récupérer le token depuis le localStorage
+        const token = localStorage.getItem('jwtToken');
+
+        if (!token) {
+            alert('User is not authenticated');
+            return;
+        }
+
+        // Décoder le token pour obtenir l'ID de l'utilisateur
+        const decodedToken = jwt_decode(token);
+        const userId = decodedToken.userId;
+        console.log('User ID:', userId);
+
         const commentData = {
             body: commentBody,
             topics_id: topicId,
-            users_id: 1, // Remplacez par l'ID de l'utilisateur connecté (à récupérer via token)
+            users_id: userId,
         };
 
-        fetch('http://localhost:3000/api/createPost', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(commentData),
-        })
-        .then(response => response.json())
-        .then(result => {
+        try {
+            const response = await fetch('http://localhost:3000/api/createPost', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(commentData),
+            });
+
+            const result = await response.json();
+
             // Création de l'élément du commentaire nouvellement ajouté
             const commentElement = document.createElement('div');
             commentElement.classList.add('post');
@@ -36,8 +52,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="comment">
                         <div class="user-info">
                             <div class="infopost">
-                                <p class="username">User</p> <!-- Remplacez par le nom de l'utilisateur connecté -->
-                                <p class="user-role">User</p>
+                                <p class="username">${decodedToken.username}</p> <!-- Utilisation du nom de l'utilisateur -->
+                                <p class="user-role">User</p> <!-- Ajoutez le rôle si nécessaire -->
                             </div>
                             <p class="post-date">Posted on: ${new Date().toLocaleDateString()}</p>
                         </div>
@@ -50,14 +66,12 @@ document.addEventListener('DOMContentLoaded', function () {
             `;
             postsContainer.appendChild(commentElement);
 
-            // Réinitialisation du champ de commentaire après l'ajout
             commentTextarea.value = '';
 
-            // Rechargement de la page pour rafraîchir les commentaires
-            location.reload();
-        })
-        .catch(error => {
+         location.reload(); 
+
+        } catch (error) {
             console.error('Error:', error);
-        });
+        }
     });
 });

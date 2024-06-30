@@ -1,18 +1,20 @@
 const mysql = require('mysql');
 
-const db = mysql.createConnection({
+const dbOptions = {
     host: 'localhost',
     user: 'root',
     password: '',
     database: 'forum'
-});
+};
 
-db.connect((err) => {
+const connection = mysql.createConnection(dbOptions);
+
+connection.connect((err) => {
     if (err) {
-       console.log(err);
-    }else{
-        console.log('Connected to database');
+        console.error('Erreur de connexion à MySQL :', err);
+        return;
     }
+    console.log('Connecté à MySQL');
 });
 
-module.exports = db;
+module.exports = connection;

@@ -171,3 +171,38 @@ header p {
     font-size: 15px;
     color: rgb(102, 102, 102);
 }
+
+.delete-button-container {
+    position: relative;
+    display: inline-block;
+}
+
+/* Style pour le menu de suppression */
+.delete-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Style pour le menu de suppression actif */
+.delete-menu.active {
+    display: block;
+}
+
+/* Style pour l'option de suppression dans le menu */
+.delete-option {
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Style pour l'image du menu de suppression */
+.delete-menu-image {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}

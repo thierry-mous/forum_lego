@@ -13,38 +13,43 @@
         <link rel="stylesheet" href="/public/css/index.css">
         <link rel="stylesheet" href="/public/css/footer.css">
     </head>
-    <body>
-        <header class="index-head">
-            <div class="header-logo">
-                <div class="logo-index">
-                    <a href="/"><img src="/public/img/logo_transparent.png" alt="logo brickodepot"></a>
-                </div>
-                <div class="nav">
-                    <a href="">Forum</a>
-                    <div class="dropdown">
-                        <a href="#" id="categoriesLink">Catégories <img id="flechebas" src="public/img/flechebas.png" alt=""></a>
-                        <div class="dropdown-content">
-                            <a href="topics?id=3">Lego Spiderman</a>
-                            <a href="topics?id=4">Lego City</a>
-                            <a href="topics?id=2">Lego Technic</a>
-                            <a href="topics?id=1">Lego Star Wars</a>
-                            <a href="topics?id=5">Lego Marvel</a>
-                        </div>
+    <header class="index-head">
+        <div class="header-logo">
+            <div class="logo-index">
+                <a href="/"><img src="/public/img/logo_transparent.png" alt="logo brickodepot"></a>
+            </div>
+            <div class="nav">
+                <a href="">Forum</a>
+                <div class="dropdown">
+                    <a href="#" id="categoriesLink">Catégories <img id="flechebas" src="public/img/flechebas.png"
+                            alt=""></a>
+                    <div class="dropdown-content">
+                        <a href="topics?id=3">Lego Spiderman</a>
+                        <a href="topics?id=4">Lego City</a>
+                        <a href="topics?id=2">Lego Technic</a>
+                        <a href="topics?id=1">Lego Star Wars</a>
+                        <a href="topics?id=5">Lego Marvel</a>
                     </div>
-                    <a href="/about">About us</a>
-                    <a href="">Contacts</a>
                 </div>
-                <div class="information">
-                    <div class="connexion">
-                        <a id="sign_in" href="/sign_in">Sign in</a>
-                        <a id="sign_up" href="/sign_up">Sign up
-                            <img id="flèche" src="public/img/flèche.png" alt="">
-                        </a>
+                <a href="/about">About us</a>
+                <a href="">Contacts</a>
+            </div>
+            <div class="information">
+                <div class="connexion" id="authLinks">
+                    <a id="sign_in" href="/login">Sign in</a>
+                    <a id="sign_up" href="/register">Sign up
+                        <img id="flèche" src="public/img/flèche.png" alt="">
+                    </a>
+                    <a href="/profile" id="profilelink" style="display:none;">Profile</a>
+                    <div class="profile-dropdown" style="display: none;">
+                        <a href="#">Settings</a>
+                        <a href="#" id="logoutlink">Logout</a>
                     </div>
                 </div>
             </div>
-            </div>
-        </header>
+        </div>
+        </div>
+    </header>
 <p>Brick'O Depot Legal Mentions
 
 1. Ownership:
