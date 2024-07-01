@@ -58,18 +58,19 @@ const deletePost = async (req, res) => {
     console.log('Post ID:', id);
 
     try {
-        const post = await Post.getPostsById(id);
+        const post = await Post.getPostsById(id);   
+        const topicUserId = post.topic_users_id;
+        const postUserId = post.users_id;
+
+        console.log('Topic User ID:', topicUserId);
+        console.log('Post User ID:', postUserId);
+        console.log('Post:', post);
 
         if (!post) {
             return res.status(404).send('Post not found');
         }
 
-        // Récupérer users_id de la table topics
-        const topicUserId = post.topic_users_id;
-
-        console.log('Topic user ID:', topicUserId);
-
-        if (topicUserId !== userId) {
+        if (topicUserId !== userId && postUserId !== userId) {
             return res.status(403).send('You are not authorized to delete this post');
         }
 

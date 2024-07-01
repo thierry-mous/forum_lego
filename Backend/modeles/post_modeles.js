@@ -94,6 +94,7 @@ const deletePost = (postId) => {
             DELETE FROM post WHERE id = ?
         `;
         db.query(sql, [postId], (err, result) => {
+            console.log('Delete post:', result);
             if (err) {
                 reject(err);
             } else {
