@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <p class="post-text">${post.body}</p>
                             </div>
                             <div class="delete-button-container">
-                                ${post.topic_user_id === userId ? `
+                                ${post.topic_user_id === userId || post.users_id === userId ? `
                                 <img src="/public/img/menu.png" alt="menu" class="delete-menu-image">
                                 <div class="delete-menu">
                                     <div class="delete-option" data-post-id="${post.id}">Supprimer</div>
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 `;
                 postsContainer.appendChild(postElement);
 
-                if (post.topic_user_id === userId) {
+                if (post.topic_user_id === userId || post.users_id === userId) {
                     const deleteButtonContainer = postElement.querySelector('.delete-button-container');
                     const deleteMenuImage = deleteButtonContainer.querySelector('.delete-menu-image');
                     const deleteMenu = deleteButtonContainer.querySelector('.delete-menu');
