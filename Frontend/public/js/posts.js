@@ -23,6 +23,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 postElement.innerHTML = `
                     <div class="center-container">
                         <div class="comment">
+                        <div class="like-container">
+                        <img src="/public/img/like.png" alt="like" class="like-image">
+                        <p class="like-count ${post.likes > 0 ? 'active' : ''}">${post.likes}</p>
+                        <img src="/public/img/dislike.png" alt="dislike" class="dislike-image">
+                        </div>
                             <div class="user-info">
                                 <div class="infopost">
                                     <p class="username">${post.username}</p>

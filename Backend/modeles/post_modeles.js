@@ -1,25 +1,27 @@
 const db = require('../utility/config');
 
 const getAllPosts = (callback) => {
-        const sql = `
-            SELECT post.id, post.body, post.publish_date, 
-                users.username AS username,
-                COALESCE(admin.admin_status, 'User') AS user_role,
-                topics.title AS topic_title 
-            FROM post 
-            JOIN users ON post.users_id = users.id 
-            JOIN topics ON post.topics_id = topics.id
-            LEFT JOIN admin ON users.admin_id = admin.id
-            ORDER BY post.publish_date DESC LIMIT 3
-        `;
-        db.query(sql, (err, results) => {
-            if (err) {
-                return callback(err, null);
-            }
-            callback(null, results);
-        });
-    }
-
+    const sql = `
+        SELECT post.id, post.body, post.publish_date, 
+            users.username AS username,
+            COALESCE(admin.admin_status, 'User') AS user_role,
+            topics.title AS topic_title,
+            COALESCE(SUM(likes.score), 0) AS likes
+        FROM post 
+        JOIN users ON post.users_id = users.id 
+        JOIN topics ON post.topics_id = topics.id
+        LEFT JOIN admin ON users.admin_id = admin.id
+        LEFT JOIN likes ON post.id = likes.post_id
+        GROUP BY post.id
+        ORDER BY post.publish_date DESC LIMIT 3
+    `;
+    db.query(sql, (err, results) => {
+        if (err) {
+            return callback(err, null);
+        }
+        callback(null, results);
+    });
+}
 
 const createPost = async (post) => {
     const sql = `
@@ -43,22 +45,24 @@ const createPost = async (post) => {
     });
 };
 
-
 const getPostsByTopicId = (topicId) => {
     return new Promise((resolve, reject) => {
         const sql = `
-    SELECT post.*, users.username, users.email, users.photo, users.biography, 
-       COALESCE(admin.admin_status, 'User') AS user_role,
-       topics.title AS title,
-       tag.label AS tag,
-       topics.users_id AS topic_user_id
-FROM post
-JOIN users ON post.users_id = users.id
-LEFT JOIN admin ON users.admin_id = admin.id
-JOIN topics ON post.topics_id = topics.id
-JOIN tag ON topics.tags_id = tag.id
-WHERE post.topics_id = ?;
-`;
+            SELECT post.*, users.username, users.email, users.photo, users.biography, 
+                COALESCE(admin.admin_status, 'User') AS user_role,
+                topics.title AS title,
+                tag.label AS tag,
+                topics.users_id AS topic_user_id,
+                COALESCE(SUM(likes.score), 0) AS likes
+            FROM post
+            JOIN users ON post.users_id = users.id
+            LEFT JOIN admin ON users.admin_id = admin.id
+            JOIN topics ON post.topics_id = topics.id
+            JOIN tag ON topics.tags_id = tag.id
+            LEFT JOIN likes ON post.id = likes.post_id
+            WHERE post.topics_id = ?
+            GROUP BY post.id;
+        `;
         db.query(sql, [topicId], (err, results) => {
             if (err) {
                 reject(err);
@@ -69,14 +73,16 @@ WHERE post.topics_id = ?;
     });
 };
 
-
 const getPostsById = (postId) => {
     return new Promise((resolve, reject) => {
         const sql = `
-            SELECT post.*, topics.users_id AS topic_users_id
+            SELECT post.*, topics.users_id AS topic_users_id,
+                COALESCE(SUM(likes.score), 0) AS likes
             FROM post
             JOIN topics ON post.topics_id = topics.id
+            LEFT JOIN likes ON post.id = likes.post_id
             WHERE post.id = ?
+            GROUP BY post.id;
         `;
         db.query(sql, [postId], (err, results) => {
             if (err) {
