@@ -103,6 +103,54 @@ const deletePost = (postId) => {
     });
 };
 
+const likePost = async (postId, userId, score) => {
+    return new Promise((resolve, reject) => {
+        const checkLikeSQL = `
+            SELECT * FROM likes WHERE post_id = ? AND user_id = ?
+        `;
+        db.query(checkLikeSQL, [postId, userId], (err, results) => {
+            if (err) {
+                return reject(err);
+            }
+            if (results.length > 0) {
+                const updateLikeSQL = `
+                    UPDATE likes SET score = ? WHERE post_id = ? AND user_id = ?
+                `;
+                db.query(updateLikeSQL, [score,postId, userId], (err, result) => {
+                    if (err) {
+                        return reject(err);
+                    }
+                    resolve(result);
+                });
+            } else {
+                const insertLikeSQL = `
+                    INSERT INTO likes (post_id, user_id, score) VALUES (?, ?, ?)
+                `;
+                db.query(insertLikeSQL, [postId, userId, score], (err, result) => {
+                    if (err) {
+                        return reject(err);
+                    }
+                    resolve(result);
+                });
+            }
+        });
+    });
+};
+
+const getLikesByPostId = (postId) => {
+    return new Promise((resolve, reject) => {
+        const sql = `
+            SELECT COALESCE(SUM(score), 0) AS likes FROM likes WHERE post_id = ?
+        `;
+        db.query(sql, [postId], (err, results) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(results[0].likes);
+            }
+        });
+    });
+};
 
 
 
@@ -110,5 +158,7 @@ module.exports = { getAllPosts,
     createPost,
     getPostsById,
     getPostsByTopicId,
-    deletePost
+    deletePost,
+    likePost,
+    getLikesByPostId
      };

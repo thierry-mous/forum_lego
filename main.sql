@@ -165,3 +165,13 @@ CREATE TABLE tag (
 INSERT INTO tag (label)
 VALUES 
 ('Star Wars'), ('Technic'), ('Spider-Man'), ('City'), ('Marvel');
+
+
+CREATE TABLE likes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    post_id INT,
+    user_id INT,
+    score INT,
+    FOREIGN KEY (post_id) REFERENCES post(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);

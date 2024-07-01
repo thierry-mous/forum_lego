@@ -79,12 +79,31 @@ const deletePost = async (req, res) => {
         console.error(err);
         res.status(500).send('Server error');
     }
+
 };
+
+const likePost = async (req, res) => {
+    const userId = req.body.userId; 
+    const score = req.body.score;
+    const postId = req.params.postId;
+
+    try {
+        await Post.likePost(postId, userId, score);
+        const likes = await Post.getLikesByPostId(postId);
+        res.status(200).json({ message: 'Post liked successfully', likes });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server error');
+    }
+};
+
 
 
 module.exports = {
     getAllPosts,
     createPost,
     deletePost,
-    getPostsByTopicId
+    getPostsByTopicId,
+    likePost
 };
+
